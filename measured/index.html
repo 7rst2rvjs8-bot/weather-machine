@@ -30,29 +30,49 @@
   </header>
 
   <main>
-  <section id="findings" class="col">
-    <div class="eyebrow rv">01 / The findings</div>
-    <div class="stack rv">
-      <div class="row panel">
-        <div class="q">Does the champion's edge survive scrutiny?</div>
-        <div class="v"><b class="vc">A FEW DOLLARS PER TRADE — A CONSERVATIVE BOUND.</b> Edge — the average per-trade advantage after costs — survives selection-deflation to a few dollars. Three sources of optimism remain explicitly bounded, not hidden: parameter choice inside each candidate, a point-in-time universe-selection effect, and the finite comparison budget. Validation continues forward, out-of-sample.</div>
+  <section id="findings" class="monograph-section col" data-section-index="01">
+    <header class="section-meta rv"><span class="index-token">01 /</span><h2>The findings</h2></header>
+
+    <dl class="findings-display-grid rv">
+      <div class="finding-node panel" data-status="verified">
+        <dt class="finding-prompt">Does the champion's edge survive scrutiny?</dt>
+        <dd class="finding-resolution">
+          <strong class="verdict-callout">A few dollars per trade — a conservative bound.</strong>
+          <p class="prose-body">Edge — the average per-trade advantage after costs — survives selection-deflation to a few dollars. Three sources of optimism remain <b>explicitly bounded, not hidden</b>: parameter choice inside each candidate, a point-in-time universe-selection effect, and the finite comparison budget. Validation continues forward, out-of-sample.</p>
+          <div class="mathematical-validation" aria-label="True edge equals measured edge minus selection bias minus costs">E<sub>true</sub> = E<sub>measured</sub> − ΔS<sub>selection</sub> − costs</div>
+        </dd>
       </div>
-      <div class="row panel">
-        <div class="q">Is the fill model right?</div>
-        <div class="v"><b class="vm">LATENCY IS THE BINDING EXECUTION RISK.</b> A roughly fixed entry cost is negligible at high premium and decisive at low — which sets a <b>premium floor</b> on tradeable entries. The first estimate traced to a polling-cadence artifact; the measurement is being re-run against the real reaction band.</div>
+
+      <div class="finding-node panel" data-status="critical">
+        <dt class="finding-prompt">Is the fill model right?</dt>
+        <dd class="finding-resolution">
+          <strong class="verdict-callout crit">Latency is the binding execution risk.</strong>
+          <p class="prose-body">A roughly fixed entry cost is negligible at high premium and decisive at low — which sets a <b>premium floor</b> on tradeable entries. The first estimate traced to a polling-cadence artifact in the data, and is being re-run against the real reaction band.</p>
+        </dd>
       </div>
-      <div class="row panel">
-        <div class="q">Are five live streams five strategies?</div>
-        <div class="v"><b class="vc">EFFECTIVE INDEPENDENCE ≈ 2.3 OF 5.</b> Variants of one signal add almost no independent information. Genuine diversity requires different signals, instruments, or horizons — not more exit variants.</div>
+
+      <div class="finding-node panel" data-status="stable">
+        <dt class="finding-prompt">Are five live streams five strategies?</dt>
+        <dd class="finding-resolution">
+          <strong class="verdict-callout">Effective independence ≈ 2.3 of 5.</strong>
+          <p class="prose-body">Variants of one signal add almost no independent information. Genuine diversity requires different signals, instruments, or horizons — not more exit variants.</p>
+        </dd>
       </div>
-    </div>
-    <p class="fnote rv">// A method note: one selection check tested its own distributional assumption rather than assuming it. The discipline applies to the measurements too.</p>
+    </dl>
+
+    <footer class="section-context">
+      <aside class="method-annotation rv" role="note">
+        <span class="syntax-prefix">// A method note:</span>
+        <p>One selection check tested its own distributional assumption rather than assuming it. The discipline applies to the measurements too.</p>
+      </aside>
+    </footer>
   </section>
 
-  <section id="calendar" class="col">
-    <div class="eyebrow rv">02 / The calendar</div>
-    <h2 class="rv">One correction takes months to prove, not weeks.</h2>
-    <p class="lede rv">At the current signal rate, validating a single few-dollar-per-trade term to adequate statistical power needs <strong>hundreds to a couple thousand forward observations</strong> — on the order of <strong>seven months to over a year</strong> per term. The ladder graduates early or kills early on accruing evidence, rather than waiting out a fixed term.</p>
+  <section id="calendar" class="monograph-section col" data-section-index="02">
+    <header class="section-meta rv"><span class="index-token">02 /</span><h2>The calendar</h2></header>
+    <article class="editorial-flow">
+      <p class="lede rv">At the current signal rate, validating a single few-dollar-per-trade term to adequate statistical power needs <strong>hundreds to a couple thousand forward observations</strong> — on the order of <strong>seven months to over a year</strong> per term. The ladder graduates early or kills early on accruing evidence, rather than waiting out a fixed term.</p>
+    </article>
   </section>
   </main>
 </div>

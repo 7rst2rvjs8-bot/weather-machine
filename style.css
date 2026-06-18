@@ -164,6 +164,26 @@ body.deep .row .term{color:#43d6e8}
 .gloss:hover{color:var(--aqua-sig);border-bottom-style:solid}
 .fnote{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px;line-height:1.6;max-width:var(--measure)}
 
+/* ---- findings (semantic dl) ---- */
+.section-meta{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.index-token{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--aqua-sig)}
+body.deep .index-token{color:#43d6e8}
+.findings-display-grid{display:grid;gap:14px;margin:30px 0 0}
+.finding-node{padding:24px}
+.finding-prompt{font-weight:500;font-size:15px;color:var(--ink);margin-bottom:12px}
+.verdict-callout{display:block;font-weight:600;font-size:1.02rem;letter-spacing:.01em;margin-bottom:8px;
+  background:linear-gradient(90deg,var(--aqua-sig),var(--ink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+body.deep .verdict-callout{background:linear-gradient(90deg,#5fe0ef,#dff3fb);-webkit-background-clip:text;background-clip:text}
+.verdict-callout.crit{background:linear-gradient(90deg,var(--magenta),var(--ink))}
+body.deep .verdict-callout.crit{background:linear-gradient(90deg,#ff7ab0,#dff3fb);-webkit-background-clip:text;background-clip:text}
+.finding-node .prose-body{color:var(--muted);font-size:13.5px;line-height:1.6;max-width:62ch}
+.finding-node .prose-body b{color:var(--ink);font-weight:500}
+.mathematical-validation{font-family:var(--mono);font-size:13px;color:var(--aqua-sig);margin-top:12px;opacity:.92}
+body.deep .mathematical-validation{color:#5fe0ef}
+.method-annotation{font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--muted);
+  background:rgba(17,182,218,0.07);border-left:3px solid var(--aqua-sig);border-radius:0 8px 8px 0;padding:12px 18px;margin-top:22px;max-width:var(--measure)}
+.method-annotation .syntax-prefix{color:var(--aqua-sig)} .method-annotation p{margin-top:4px;max-width:none}
+
 /* ---- field guide index cards + next row ---- */
 .guidegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
 @media(max-width:680px){.guidegrid{grid-template-columns:1fr}}
@@ -202,8 +222,8 @@ body.deep .nextrow a{color:#7fe6d8}
 .entries a{color:var(--deep);text-decoration:none;font-size:13px;letter-spacing:.02em;padding-bottom:3px;border-bottom:1px solid rgba(14,111,140,.45);transition:color .2s,border-color .2s}
 .entries a:hover{color:var(--aqua-sig);border-color:var(--aqua-sig)}
 .entries a.muted{color:var(--faint);border-color:transparent} .entries a.muted:hover{color:var(--deep)}
-.panel{position:relative;align-self:stretch;min-height:100svh}
-@media(max-width:860px){.panel{min-height:auto;height:66svh;margin-top:26px}}
+body.home .panel{position:relative;align-self:stretch;min-height:100svh}
+@media(max-width:860px){body.home .panel{min-height:auto;height:66svh;margin-top:26px}}
 #graph{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:default}
 .tip{position:absolute;z-index:6;pointer-events:none;opacity:0;transform:translate(-50%,-145%);transition:opacity .18s;
   font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ink);white-space:nowrap;
