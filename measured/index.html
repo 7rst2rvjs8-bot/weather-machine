@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Measured — The Weather Machine</title>
+<meta name="description" content="Three foundational assumptions, tested against data before building further. None flattered the plan — and each is stated at the honest limit of what's known.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="elev-soil">
+<div class="bg" aria-hidden="true"></div>
+<canvas id="roots" aria-hidden="true"></canvas>
+<div class="soilscrim" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+  <button class="navtoggle" aria-label="Menu">Menu</button>
+  <div class="navlinks">
+    <a href="../">Forecast</a>
+    <a href="../method/">Method</a>
+    <a href="../machine/">Machine</a>
+    <a href="../measured/" aria-current="page">Measured</a>
+    <a href="../fork/">Fork</a>
+    <a href="../trajectory/">Trajectory</a>
+    <a href="../state/">State</a>
+    <a href="../creator/">Creator</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">What's measured · the foundations</div>
+    <h1 class="rv">Three assumptions, <span class="grow">tested.</span></h1>
+    <p class="sub rv">Before building further, three load-bearing assumptions were checked against existing data. They came back as findings — and each <b>reshaped the roadmap rather than confirming it</b>. Stated here at the honest limit of what's actually known, not the flattering edge.</p>
+  </header>
+
+  <main>
+  <section id="findings" class="col">
+    <div class="eyebrow rv">01 &nbsp;/&nbsp; The findings</div>
+    <div class="stack rv">
+      <div class="row panel">
+        <div class="q">Does the champion have a real edge?</div>
+        <div class="v"><b class="vm">PLAUSIBLE — NOT CONFIRMED.</b> Survives selection-deflation to roughly <b>$4–5 per trade</b> — but that figure is an <b>upper bound</b>. It only rules out final-stage selection among the candidates; three larger doubts stay open: parameter-tuning inside each candidate, a point-in-time universe-selection lookahead, and the finite mining budget. Not-falsified is not confirmed.</div>
+      </div>
+      <div class="row panel">
+        <div class="q">Is the fill model roughly right?</div>
+        <div class="v"><b class="vm">LATENCY IS A THREAT — AND BEING RE-MEASURED.</b> An early latency estimate turned out to be largely a measurement artifact (a polling-cadence effect, not true reaction lag), so the latency conclusions are <b>currently suspended pending a clean recompute</b>. What's structural and survives: a roughly fixed entry cost is devastating at low premium and minor at high — pointing toward a <b>premium floor</b> as a refinement, not an invalidation.</div>
+      </div>
+      <div class="row panel">
+        <div class="q">Are five live streams five strategies?</div>
+        <div class="v"><b class="vc">NO — ABOUT 2.3 REAL BETS.</b> Variants of one signal add almost no independence; the "five streams" are roughly two-to-three real bets in costumes. Genuine diversity needs genuinely different signals, instruments, or horizons — not more exit variants.</div>
+      </div>
+    </div>
+    <p class="fnote rv">// A method note, logged: one selection check tested its own distributional assumption rather than assuming fat tails — the next one will do the same. The discipline applies to the measurements too.</p>
+  </section>
+
+  <section id="calendar" class="col">
+    <div class="eyebrow rv">02 &nbsp;/&nbsp; The calendar finding</div>
+    <h2 class="rv">Proving one correction term costs months, not weeks.</h2>
+    <p class="lede rv">At the current signal rate, validating a single few-dollar-per-trade term to adequate statistical power needs <strong>hundreds to roughly two thousand forward signals</strong> — on the order of <strong>seven months to a year and a half</strong> of real accrual, per term. That calendar price is why the ladder is built to <strong>graduate early and kill early</strong> on accumulating evidence, rather than waiting out a fixed term.</p>
+  </section>
+  </main>
+</div>
+
+<footer class="colophon">
+  <div class="col">
+    <div class="shows">
+      <h4>[ Shown — on purpose ]</h4>
+      <ul><li>The method and the governing rule</li><li>The foundational findings, including the unflattering ones</li><li>Coarse gate and fill state</li><li>The universe by size and character</li><li>The full trajectory</li></ul>
+    </div>
+    <div class="hides">
+      <h4>[ Withheld — on purpose ]</h4>
+      <ul><li>Credentials, broker, and account detail</li><li>Live open positions</li><li>The specific tickers</li><li>Signal mechanics — the edge itself</li></ul>
+    </div>
+  </div>
+</footer>
+<div class="footmark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
+
+<script src="../state.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

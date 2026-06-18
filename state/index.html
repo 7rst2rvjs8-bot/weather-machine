@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current State — The Weather Machine</title>
+<meta name="description" content="Where it stands right now: the gate certified, the first real fill pending, and the post-fill question deliberately left open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="elev-loam">
+<div class="bg" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+  <button class="navtoggle" aria-label="Menu">Menu</button>
+  <div class="navlinks">
+    <a href="../">Forecast</a>
+    <a href="../method/">Method</a>
+    <a href="../machine/">Machine</a>
+    <a href="../measured/">Measured</a>
+    <a href="../fork/">Fork</a>
+    <a href="../trajectory/">Trajectory</a>
+    <a href="../state/" aria-current="page">State</a>
+    <a href="../creator/">Creator</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">Where it stands</div>
+    <h1 class="rv">The instrument is ready. The <span class="grow">first heartbeat</span> is next.</h1>
+    <p class="sub rv">A coarse, honest snapshot — the same values that drive the rest of the site, hand-maintained at the seam. No P&amp;L, no positions; just where the build actually is.</p>
+  </header>
+
+  <main>
+  <section id="first-fill" class="col">
+    <div class="eyebrow hot rv">Current state</div>
+    <div class="statepanel panel rv">
+      <div class="head"><div class="t">// CURRENT STATE</div><div class="ts" id="updated">UPDATED — set in STATE</div></div>
+      <div class="srow">
+        <div class="label">Gate</div>
+        <div class="body"><span class="status sig-grown"><span class="dot"></span><span data-state="gate">4/4 CERTIFIED</span></span>
+          <span class="note">Consecutive clean days against pre-committed criteria. Certifies the harness — explicitly not the edge.</span></div>
+      </div>
+      <div class="srow">
+        <div class="label">Edge</div>
+        <div class="body"><span class="status sig-active"><span class="dot"></span><span data-state="edge">PLAUSIBLE · UNCONFIRMED</span></span>
+          <span class="note">Plausible after selection-deflation, but unconfirmed — an upper bound with real doubts still open. See <a href="../measured/" style="color:var(--leaf)">What's Measured</a>.</span></div>
+      </div>
+      <div class="srow">
+        <div class="label">First fill</div>
+        <div class="body"><span class="status sig-active"><span class="dot pulse"></span><span data-state="firstFill">PENDING · 06-18</span></span>
+          <span class="note">One contract, attended, manual exit. A single execution datapoint — <b>does the real fill match the model?</b> Not a verdict. The single most informative event in the project, and the thing everything else exists to serve.</span></div>
+      </div>
+      <div class="srow">
+        <div class="label">Open question</div>
+        <div class="body"><span class="status sig-open"><span class="dot"></span>UNDECIDED</span>
+          <span class="note">Post-fill, three directions stay open — deferred to a rested decision after the evidence arrives. See <a href="../fork/" style="color:var(--iris)">The Fork</a>.</span></div>
+      </div>
+    </div>
+    <p class="fnote rv">// This panel is driven by a single STATE object — the same seam a local sanitizer will one day write to. Today it's hand-edited; the values never imply a result that isn't in evidence.</p>
+  </section>
+  </main>
+</div>
+
+<footer class="colophon">
+  <div class="col">
+    <div class="shows">
+      <h4>[ Shown — on purpose ]</h4>
+      <ul><li>The method and the governing rule</li><li>The foundational findings, including the unflattering ones</li><li>Coarse gate and fill state</li><li>The universe by size and character</li><li>The full trajectory</li></ul>
+    </div>
+    <div class="hides">
+      <h4>[ Withheld — on purpose ]</h4>
+      <ul><li>Credentials, broker, and account detail</li><li>Live open positions</li><li>The specific tickers</li><li>Signal mechanics — the edge itself</li></ul>
+    </div>
+  </div>
+</footer>
+<div class="footmark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
+
+<script src="../state.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

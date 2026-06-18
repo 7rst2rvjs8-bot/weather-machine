@@ -21,6 +21,12 @@ weather-machine-*.html
 *.draft.html
 index.work.html
 
+# Multipage staging build — promoted to repo root only on approval
+_work/
+
+# Local tooling / preview config
+.claude/
+
 # Future rung-2 sanitizer scratch — never publish source/state pulls
 state.json
 *.local

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Method — The Weather Machine</title>
+<meta name="description" content="An error-correction engine: crude first model, then one validated correction term at a time — earned on forward evidence, never fit to the past.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="elev-canopy">
+<div class="bg" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+  <button class="navtoggle" aria-label="Menu">Menu</button>
+  <div class="navlinks">
+    <a href="../">Forecast</a>
+    <a href="../method/" aria-current="page">Method</a>
+    <a href="../machine/">Machine</a>
+    <a href="../measured/">Measured</a>
+    <a href="../fork/">Fork</a>
+    <a href="../trajectory/">Trajectory</a>
+    <a href="../state/">State</a>
+    <a href="../creator/">Creator</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">The method</div>
+    <h1 class="rv">Built like a <span class="grow">forecast model.</span></h1>
+    <p class="sub rv">Weather prediction didn't get accurate from one genius model. It got accurate from crude models that <b>logged where they were wrong</b> and added the one term that would have caught each miss — iterated for decades. This system is the same architecture, applied to markets.</p>
+  </header>
+
+  <main>
+  <section id="idea" class="col">
+    <div class="eyebrow rv">01 &nbsp;/&nbsp; The engine</div>
+    <h2 class="rv">An error-correction engine, not a fixed strategy.</h2>
+    <p class="lede rv">The goal isn't one clever model; it's a <strong>book of independent strategies</strong>, each running its own error-correction loop. The current champion is deliberately framed as <strong>the crude first model</strong>. Every later addition is a candidate <strong>correction term</strong> — added not as a feature off a menu, but because it catches a specific, recurring class of miss the system currently whiffs on. Complexity is the goal; the discipline below is what keeps it from becoming a fake version of itself.</p>
+    <div class="rule panel rv">
+      <p>A correction term earns its place only by catching a real, named miss in data the system has never seen. Build all the plumbing you want — make no decision against old data.</p>
+      <div class="src">The governing rule · what separates a weather machine from a curve-fit</div>
+    </div>
+  </section>
+
+  <section id="loop" class="col">
+    <div class="eyebrow rv">02 &nbsp;/&nbsp; The loop · one error-correction cycle</div>
+    <h2 class="rv">Every strategy is the same five-step loop, turned over and over.</h2>
+    <div class="loop-track rv">
+      <div class="lstep panel"><div class="ln">01 · TRADE</div><h4>Take the position</h4><p>Live, or shadowed — a signal acted on, or logged as one that would have been.</p></div>
+      <div class="lstep panel fuel"><div class="ln">02 · LOG THE MISS</div><h4>Record where it was wrong</h4><p>The miss is the fuel. Rich miss-logging is the highest-value thing the live system produces.</p></div>
+      <div class="lstep panel"><div class="ln">03 · PROPOSE THE TERM</div><h4>One correction</h4><p>The single term that would have caught that named miss — a fresh hypothesis, not a tweak.</p></div>
+      <div class="lstep panel"><div class="ln">04 · FORWARD-TEST</div><h4>On unseen days</h4><p>Shadow it forward against data it has never touched. Never rescued by re-reading the past.</p></div>
+      <div class="lstep panel"><div class="ln">05 · PROMOTE / KILL</div><h4>Earned, or retired</h4><p>Cheap to kill, hard to promote. It survives only provisionally; a failure kills it definitively.</p></div>
+    </div>
+    <p class="fnote rv">// No named miss → not a correction term → it does not belong on the roadmap. The loop cannot turn faster than real market days accrue: the binding constraint is the calendar, not effort.</p>
+  </section>
+
+  <section id="doctrine" class="col">
+    <div class="eyebrow rv">03 &nbsp;/&nbsp; The search doctrine</div>
+    <h2 class="rv">Wide over the unknown. Narrow only at the evidenced gate.</h2>
+    <p class="lede rv">The hardest discipline is keeping two activities strictly apart — because collapsing them is exactly how a system fools itself.</p>
+    <div class="cards rv">
+      <div class="card panel grown"><div class="ct">[ Characterization — wide, free ]</div><h3>Learning</h3><p>Every candidate enters as data: its properties logged per signal, never gated on. A signal that's sound but whose costs eat it is a <b>finding</b>, not a silent rejection.</p></div>
+      <div class="card panel active"><div class="ct">[ Selection — narrow, costly ]</div><h3>Promotion</h3><p>Promoting anything to live capital is a separate, pre-registered gate under full multiple-comparisons deflation. The wide net <b>informs</b> this gate without <b>being</b> it.</p></div>
+    </div>
+    <div class="rule panel rv">
+      <p>The wide net feeds learning — never feeds selection directly. Characterization is free; comparison costs power; they live at different layers. Collapse them and the selection bias reappears at universe scale.</p>
+      <div class="src">The load-bearing line</div>
+    </div>
+  </section>
+
+  <section id="budget" class="col">
+    <div class="eyebrow rv">04 &nbsp;/&nbsp; Why the discipline is non-negotiable</div>
+    <h2 class="rv">The past is a budget you can only spend down.</h2>
+    <p class="lede rv">Every test run against the fixed historical window spends one comparison from a <strong>finite budget</strong> — and roughly twenty are already gone. Mine it hard enough and any system looks omniscient in backtest and behaves like a coin flip live. So validation discipline is never argued as "keep it simple." The target is <strong>complex-and-validated, built forward</strong>. Simplicity is never the case; honest forward measurement is. One validated term at a time.</p>
+  </section>
+  </main>
+</div>
+
+<footer class="colophon">
+  <div class="col">
+    <div class="shows">
+      <h4>[ Shown — on purpose ]</h4>
+      <ul><li>The method and the governing rule</li><li>The foundational findings, including the unflattering ones</li><li>Coarse gate and fill state</li><li>The universe by size and character</li><li>The full trajectory</li></ul>
+    </div>
+    <div class="hides">
+      <h4>[ Withheld — on purpose ]</h4>
+      <ul><li>Credentials, broker, and account detail</li><li>Live open positions</li><li>The specific tickers</li><li>Signal mechanics — the edge itself</li></ul>
+    </div>
+  </div>
+</footer>
+<div class="footmark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
+
+<script src="../state.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

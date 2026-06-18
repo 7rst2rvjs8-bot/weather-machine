@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Machine — The Weather Machine</title>
+<meta name="description" content="An instrument first. The harness is what the gate certifies; whether an edge exists is a separate, open question — and the two are kept strictly apart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="elev-loam">
+<div class="bg" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+  <button class="navtoggle" aria-label="Menu">Menu</button>
+  <div class="navlinks">
+    <a href="../">Forecast</a>
+    <a href="../method/">Method</a>
+    <a href="../machine/" aria-current="page">Machine</a>
+    <a href="../measured/">Measured</a>
+    <a href="../fork/">Fork</a>
+    <a href="../trajectory/">Trajectory</a>
+    <a href="../state/">State</a>
+    <a href="../creator/">Creator</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">The machine</div>
+    <h1 class="rv">An instrument <span class="grow">first.</span></h1>
+    <p class="sub rv">Most of the work so far has gone into proving the <b>harness</b> — the execution, logging, and test scaffolding — is trustworthy, <b>kept strictly apart from whether the edge exists</b>. A clean instrument can still measure an edge that isn't there. Conflating the two is the failure the project is built to avoid.</p>
+  </header>
+
+  <main>
+  <section id="harness" class="col">
+    <div class="eyebrow rv">01 &nbsp;/&nbsp; Two separate questions</div>
+    <h2 class="rv">What's certified is the instrument — not the edge.</h2>
+    <div class="cards rv">
+      <div class="card panel grown"><div class="ct">[ Certified ]</div><h3>The harness</h3><p>Are the measurements real — clean fills, honest logs, no leakage between what's modeled and what's recorded? This is what the gate certifies.</p></div>
+      <div class="card panel active"><div class="ct">[ Unconfirmed ]</div><h3>The edge</h3><p>Does any strategy actually make money? Stated as open. A trustworthy instrument is the precondition for asking — never the answer.</p></div>
+    </div>
+  </section>
+
+  <section id="streams" class="col">
+    <div class="eyebrow rv">02 &nbsp;/&nbsp; The architecture</div>
+    <h2 class="rv">A book of strategies, mostly still ahead.</h2>
+    <div class="stack rv">
+      <div class="row panel"><div class="term">META-LAYER</div><div class="def">Allocates capital across strategies and <b>prices in selection bias</b> over the count of strategies it chooses among. The destination, not today's reality.</div></div>
+      <div class="row panel"><div class="term">STRATEGY #1</div><div class="def">The champion — a momentum/breakout approach on short-dated options. Works in backtest; <b>has never traded live</b>. The crude first model, by design.</div></div>
+      <div class="row panel"><div class="term">SHADOW STREAMS</div><div class="def">Run live during market hours, logging every signal that <b>would</b> have fired — accumulating forward evidence before a dollar is risked.</div></div>
+      <div class="row panel"><div class="term">UNIVERSE</div><div class="def"><b><span data-state="universeCount">9</span> liquid names</b> — broad-market ETFs plus a few high-volume single names. Specific tickers and signal mechanics are deliberately not published.</div></div>
+    </div>
+    <p class="fnote rv">// The candidate net is wide over the unknown, narrow only at the evidenced gate — see <a href="../method/#doctrine" style="color:var(--leaf)">The Method</a>.</p>
+  </section>
+  </main>
+</div>
+
+<footer class="colophon">
+  <div class="col">
+    <div class="shows">
+      <h4>[ Shown — on purpose ]</h4>
+      <ul><li>The method and the governing rule</li><li>The foundational findings, including the unflattering ones</li><li>Coarse gate and fill state</li><li>The universe by size and character</li><li>The full trajectory</li></ul>
+    </div>
+    <div class="hides">
+      <h4>[ Withheld — on purpose ]</h4>
+      <ul><li>Credentials, broker, and account detail</li><li>Live open positions</li><li>The specific tickers</li><li>Signal mechanics — the edge itself</li></ul>
+    </div>
+  </div>
+</footer>
+<div class="footmark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
+
+<script src="../state.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>
