@@ -12,7 +12,7 @@ window.STATE = {
   name: "THE WEATHER MACHINE",
   updated: "2026-06-17",       // YYYY-MM-DD
   gate: "4/4 CERTIFIED",
-  edge: "PLAUSIBLE · UNCONFIRMED",
+  edge: "IN FORWARD VALIDATION",
   firstFill: "PENDING · 06-18",
   universeCount: 9
 };

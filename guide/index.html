@@ -3,60 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Field Guide — The Weather Machine</title>
-<meta name="description" content="Plain-English explainers for every idea on the site — written for someone who knows nothing about investing. Start anywhere.">
+<title>Field Guide — The Weather Machine</title>
+<meta name="description" content="Plain-language explanations of the ideas behind the system — written for a sharp reader who isn't a markets specialist.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="guide elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
 
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a>
-    <a href="./" aria-current="page">Field Guide</a>
-    <a href="../method/">Method</a>
-    <a href="../machine/">Machine</a>
-    <a href="../measured/">Measured</a>
-    <a href="../trajectory/">Trajectory</a>
-    <a href="../state/">State</a>
-    <a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../">Forecast</a><a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Findings</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a>
+  </nav>
+</header>
 
 <div class="wrap">
   <header class="phead col">
-    <div class="kicker rv">The field guide</div>
-    <h1 class="rv">Every idea here, in <span class="grow">plain English.</span></h1>
-    <p class="plain lead rv">No finance background needed. Each card explains one idea from scratch — what it is, why it matters, and what it does <b>not</b> mean. If a word ever loses you anywhere on the site, there’s a red “?” for it. Start anywhere.</p>
+    <div class="kicker rv">Field guide</div>
+    <h1 class="rv">The ideas, in <span class="grow">plain language.</span></h1>
+    <p class="sub rv">Short explanations of the terms the rest of the site uses — written for a sharp reader who doesn't trade for a living. No prior knowledge assumed; nothing dumbed down.</p>
   </header>
-
   <main>
   <section class="col">
     <div class="guidegrid rv">
-      <a class="gcard panel" href="start-here/"><div class="ga">?</div><h3>Start here</h3><p>The whole thing in one paragraph, before any jargon appears.</p></a>
-      <a class="gcard panel" href="the-gate/"><div class="ga">?</div><h3>The “4/4 gate”</h3><p>The safety check the machine had to pass — and the thing it deliberately did not prove.</p></a>
-      <a class="gcard panel" href="the-edge/"><div class="ga">?</div><h3>What “an edge” is</h3><p>Does it actually make money? Why the honest answer is still “we don’t know yet.”</p></a>
-      <a class="gcard panel" href="the-fill/"><div class="ga">?</div><h3>What “the fill” is</h3><p>The first real trade, and why a single one matters more than any test.</p></a>
-      <a class="gcard panel" href="shadow-streams/"><div class="ga">?</div><h3>Shadow streams</h3><p>Practice trades that risk no money but still teach the system.</p></a>
-      <a class="gcard panel" href="the-loop/"><div class="ga">?</div><h3>The correction loop</h3><p>The weather-forecasting idea the whole project is built on.</p></a>
+      <a class="gcard panel" href="start-here/"><div class="ga">?</div><h3>Start here</h3><p>The whole idea in a paragraph, before any term appears.</p></a>
+      <a class="gcard panel" href="the-gate/"><div class="ga">?</div><h3>The 4/4 gate</h3><p>What passed, what it proved, and what it deliberately did not.</p></a>
+      <a class="gcard panel" href="the-edge/"><div class="ga">?</div><h3>The edge</h3><p>What “does it earn?” actually means, and how it gets answered.</p></a>
+      <a class="gcard panel" href="the-fill/"><div class="ga">?</div><h3>The fill</h3><p>The first real trade, and why one contract carries so much weight.</p></a>
+      <a class="gcard panel" href="shadow-streams/"><div class="ga">?</div><h3>Shadow streams</h3><p>Trades logged but never placed — evidence with no money at risk.</p></a>
+      <a class="gcard panel" href="the-loop/"><div class="ga">?</div><h3>The correction loop</h3><p>How a system improves by studying its own mistakes.</p></a>
     </div>
   </section>
   </main>
 </div>
 
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
-
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>

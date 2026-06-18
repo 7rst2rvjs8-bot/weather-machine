@@ -4,46 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Fork — The Weather Machine</title>
-<meta name="description" content="After the first real trade, three directions stay genuinely open — decided on evidence, not momentum.">
+<meta name="description" content="After the first live trade, three directions stay genuinely open — settled on evidence, not momentum.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="elev-loam">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a><a href="../guide/">Field Guide</a><a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Measured</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Findings</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a><a href="../guide/">Field Guide</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">The fork</div>
     <h1 class="rv">Three roads, <span class="grow">held open.</span></h1>
-    <p class="sub rv">After the <a class="gloss" href="../guide/the-fill/">first real trade</a>, the project reaches a genuine decision point. The three directions below are <b>not ranked and not pre-judged</b> — they wait for a rested decision once the evidence is actually in. Naming them now is a promise to choose on evidence, not on momentum.</p>
+    <p class="sub rv">The <a class="gloss" href="../guide/the-fill/">first live trade</a> reaches a genuine decision point. The three directions below are <b>not ranked and not pre-judged</b> — each waits for a rested decision once the evidence is in. Naming them now commits the choice to evidence, not momentum.</p>
   </header>
+
   <main>
   <section class="col">
     <div class="eyebrow open rv">The decision · after the first trade</div>
     <div class="stack rv">
-      <div class="row panel"><div class="term">CHANGE COURSE</div><div class="def">Turn toward slower, steadier kinds of strategies — a different shape of advantage with different risks, run through the same prove-it-forward process from scratch.</div></div>
-      <div class="row panel"><div class="term">GROW IT</div><div class="def">Keep today’s approach and <b>trade it at larger size</b> — but only along a pre-set schedule that scales up on evidence, never on a date or a hunch.</div></div>
-      <div class="row panel"><div class="term">STEP BACK</div><div class="def">Re-examine whether <b>there’s any real advantage here at all</b> — and be willing to conclude the honest answer is “not yet,” or “not here.”</div></div>
+      <div class="row panel"><div class="term">CHANGE COURSE</div><div class="def">Turn toward slower, structural kinds of strategy — a different shape of advantage with different failure modes, run through the same prove-it-forward process from scratch.</div></div>
+      <div class="row panel"><div class="term">GROW IT</div><div class="def">Keep today's approach and <b>trade it at larger size</b> — along a pre-set schedule that scales on evidence, never on a date or a hunch.</div></div>
+      <div class="row panel"><div class="term">STEP BACK</div><div class="def">Re-examine whether <b>a real advantage clears the bar at all</b> — and be willing to conclude the honest answer is “not yet,” or “not here.”</div></div>
     </div>
-    <p class="fnote rv">// The fork is on the map on purpose. A project that can’t point to the road where it might stop isn’t being honest about the other two.</p>
+    <p class="fnote rv">// The road where the project might stop is on the map on purpose. The other two are honest only beside it.</p>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>

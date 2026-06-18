@@ -3,56 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start here — The Weather Machine</title>
-<meta name="description" content="The whole project explained in one paragraph, for someone who knows nothing about investing.">
+<title>Start here — Field Guide — The Weather Machine</title>
+<meta name="description" content="The whole idea in a paragraph, for someone who has never traded.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="guide elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
 
-<nav class="nav">
-  <a class="brand" href="../../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<header class="nav">
+  <a class="brand" href="../../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Measured</a><a href="../../trajectory/">Trajectory</a><a href="../../state/">State</a><a href="../../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Findings</a><a href="../../state/">State</a>
+  </nav>
+</header>
 
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">Field guide · start here</div>
-    <h1 class="rv">What is this, <span class="grow">really?</span></h1>
+    <h1 class="rv">The whole idea, <span class="grow">in a paragraph.</span></h1>
   </header>
   <main>
   <section class="col">
-    <p class="plain lead rv">This is one person’s attempt to build a system that trades the stock market a little more wisely over time — not by being a genius once, but by being honest about its mistakes. Every time it guesses wrong, it writes that down and fixes one error, the way weather forecasts slowly got more accurate over decades. Right now it is very early: the system has passed a <b>safety check</b>, but it has <b>not</b> yet been shown to actually make money — and this site is careful never to pretend otherwise.</p>
-    <p class="plain rv">That’s the whole thing. Everything else is detail.</p>
-    <p class="plain rv">A few honest notes before you explore. Investing money you can’t afford to lose is risky, and options — the kind of trades this system makes — are riskier than most. Nothing here is advice. There are <b>no profit claims anywhere on this site</b>, because there are no profits yet, by design. What you’re looking at is the careful, unglamorous groundwork that has to come <i>before</i> anyone can honestly say whether an idea works.</p>
-    <div class="callout rv">
-      <div class="t">If you remember one thing</div>
-      <p>“The machine works reliably” and “the machine makes money” are two different claims. This project has earned the first and is being very careful about the second. Telling them apart is the entire discipline.</p>
+    <p class="plain lead rv">Weather forecasts didn't become accurate through a single brilliant model. They improved over decades by recording exactly where each forecast went wrong and adding one fix for that specific mistake, again and again. This is a trading system built the same way: it keeps a careful record of its own misses and earns one correction at a time.</p>
+    <p class="plain rv">Two rules keep it honest. A fix only counts if it works on days the system has never seen — not on the history it was tuned against. And no real money moves until the case for it is made on that fresh evidence. So far, the careful part is built and the trading has barely begun, which is exactly the intended order.</p>
+    <p class="plain rv">Everything else on the site is a closer look at one piece of that: how the loop works, what's been measured, what's certified, and what comes next.</p>
+    <div class="nextrow rv">
+      <a href="../the-loop/">The correction loop →</a>
+      <a href="../the-gate/">The 4/4 gate →</a>
+      <a href="../../method/">The method →</a>
     </div>
-    <p class="plain rv">When you’re ready, the red “?” apples on the home page each open one idea like this one. The green branches show the actual build.</p>
-    <div class="guidegrid rv">
-      <a class="gcard panel" href="../the-gate/"><div class="ga">?</div><h3>The “4/4 gate”</h3><p>The safety check it passed — and what that did and didn’t prove.</p></a>
-      <a class="gcard panel" href="../the-edge/"><div class="ga">?</div><h3>What “an edge” is</h3><p>Does it actually make money? The honest “not yet.”</p></a>
-      <a class="gcard panel" href="../the-loop/"><div class="ga">?</div><h3>The correction loop</h3><p>The weather-forecasting idea at the heart of it.</p></a>
-    </div>
-    <div class="nextrow rv"><a href="../">All of the Field Guide →</a><a href="../../method/">See how it learns →</a></div>
   </section>
   </main>
 </div>
 
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../../colophon/">colophon</a></p></footer>
 <script src="../../state.js"></script>
 <script src="../../site.js"></script>
 </body>

@@ -3,79 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What the 4/4 gate means — The Weather Machine</title>
-<meta name="description" content="In plain language: what the '4/4 gate' is, what passing it actually proved, and the one thing it deliberately did not prove.">
+<title>The 4/4 gate — Field Guide — The Weather Machine</title>
+<meta name="description" content="What the 4/4 gate is, what passing it proved, and the one thing it deliberately did not prove.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="guide elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
 
-<nav class="nav">
-  <a class="brand" href="../../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<header class="nav">
+  <a class="brand" href="../../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../../">Forecast</a>
-    <a href="../" aria-current="page">Field Guide</a>
-    <a href="../../method/">Method</a>
-    <a href="../../machine/">Machine</a>
-    <a href="../../measured/">Measured</a>
-    <a href="../../trajectory/">Trajectory</a>
-    <a href="../../state/">State</a>
-    <a href="../../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Findings</a><a href="../../state/">State</a>
+  </nav>
+</header>
 
 <div class="wrap">
   <header class="phead col">
-    <div class="kicker rv" style="display:flex;align-items:center;gap:12px">
-      <span style="view-transition-name:gate-apple;width:30px;height:30px;border-radius:50%;background:#E24A3A;color:#fff;font-family:var(--sans);font-weight:700;display:inline-flex;align-items:center;justify-content:center">?</span>
-      Field guide · the basics
-    </div>
-    <h1 class="rv">What the <span class="grow">“4/4 gate”</span> actually means.</h1>
-    <p class="plain lead rv">Imagine you build a machine that’s meant to trade for you. Before you ever let it near real money, you’d want to be certain of one boring but crucial thing: that the machine does <b>exactly</b> what it claims, every single time, with no glitches. The “gate” is that safety check.</p>
+    <div class="kicker rv">Field guide · the basics</div>
+    <h1 class="rv">The <span class="grow">4/4 gate.</span></h1>
+    <p class="plain lead rv">Before a machine built to trade is allowed near real money, one thing has to be settled: that it does exactly what it claims, every time, with no glitches. The gate is that check.</p>
   </header>
-
   <main>
   <section class="col">
-    <p class="plain rv">So what does it actually check? Boring, essential stuff: that every trade gets recorded correctly, that the price information feeding the machine arrives clean and on time, that the software’s actions match its own instructions, and that nothing quietly breaks while no one is watching.</p>
-    <p class="plain rv">It has to do all of that <b>perfectly, for four separate trading days</b>. “4/4” just means four clean days out of four. It passed all four. That’s the whole phrase.</p>
-
+    <p class="plain rv">It verifies the boring, essential things — every trade recorded correctly, prices arriving clean and on time, the software's actions matching its own instructions, nothing breaking silently. The check has to come back clean for four separate trading sessions. “4/4” is four clean sessions out of four.</p>
     <div class="callout rv">
-      <div class="t">The part people get wrong</div>
-      <p>Passing the gate proved the machine is <b>trustworthy</b>. It did <b>not</b> prove the machine makes <b>money</b>. Those are two completely different questions — and never confusing them is the entire point.</p>
+      <div class="t">The part that's easy to miss</div>
+      <p>Passing the gate proves the machine is trustworthy. It does not prove the machine makes money. Those are two different claims, and keeping them apart is the whole discipline.</p>
     </div>
-
-    <p class="plain rv">Here’s why that distinction matters so much. It’s tempting to see a system that “works” and assume it must be profitable. But “the plumbing works” and “the strategy actually earns” are different claims. You first make sure your measuring instrument is accurate; only then can you trust what it tells you. The gate certifies the instrument. Whether there’s real money to be made — what this project calls the <a class="gloss" href="../the-edge/">edge</a> — is still an open question, on purpose.</p>
-
+    <p class="plain rv">A measuring instrument has to be accurate before its readings mean anything. The gate certifies the instrument. Whether there is money to be made — the <a class="gloss" href="../the-edge/">edge</a> — is a separate question, answered later and forward, not here.</p>
     <details class="deeper rv">
       <summary>Go deeper — the technical version</summary>
-      <div class="body">
-        <p>In the project’s terms, the gate certifies the <b>harness</b> — the execution, logging, and test scaffolding around the strategy — across consecutive clean, unattended trading days measured against <b>pre-committed</b> criteria (criteria fixed in advance, so the bar can’t move to fit the result).</p>
-        <p>What it explicitly does not certify is the <b>edge</b>: a clean instrument can faithfully measure an edge that isn’t there. Keeping “is the instrument trustworthy?” strictly apart from “is there an edge?” is the discipline the whole system is built around — see <a class="gloss" href="../../machine/">The Machine</a>.</p>
-      </div>
+      <div class="body"><p>The gate certifies the <b>harness</b> — execution, logging, and test scaffolding — across consecutive clean, unattended sessions against criteria fixed in advance, so the bar cannot move to fit the result. It explicitly does not certify the edge: a faithful instrument can still measure an edge that is not there. See <a class="gloss" href="../../machine/">The Machine</a>.</p></div>
     </details>
-
     <div class="nextrow rv">
-      <a href="../the-edge/">Next: what “an edge” is →</a>
-      <a href="../the-fill/">What “the fill” is →</a>
-      <a href="../../state/">See the live state →</a>
-      <a href="../">All of the Field Guide →</a>
+      <a href="../the-edge/">Next: the edge →</a>
+      <a href="../the-fill/">The fill →</a>
+      <a href="../../state/">Live state →</a>
     </div>
   </section>
   </main>
 </div>
 
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
-
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../../colophon/">colophon</a></p></footer>
 <script src="../../state.js"></script>
 <script src="../../site.js"></script>
 </body>

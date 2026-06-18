@@ -4,28 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Current State — The Weather Machine</title>
-<meta name="description" content="Where it stands right now: the safety check passed, the first real trade pending, and the next big decision deliberately left open.">
+<meta name="description" content="Where the build stands: the machinery certified, the first live trade pending, the next decision deliberately open.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="elev-loam">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a><a href="../guide/">Field Guide</a><a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Measured</a><a href="../trajectory/">Trajectory</a><a href="../state/" aria-current="page">State</a><a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Findings</a><a href="../trajectory/">Trajectory</a><a href="../state/" aria-current="page">State</a><a href="../creator/">Creator</a><a href="../guide/">Field Guide</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">Where it stands</div>
     <h1 class="rv">The instrument is ready. The <span class="grow">first heartbeat</span> is next.</h1>
-    <p class="sub rv">A plain, honest snapshot — the same handful of values that drive the rest of the site. No profit figures, no positions; just where the build actually is right now.</p>
+    <p class="sub rv">The same handful of values that drive the rest of the site. No profit figures, no positions — kept coarse on purpose.</p>
   </header>
+
   <main>
   <section id="first-fill" class="col">
     <div class="eyebrow hot rv">Current state</div>
@@ -34,34 +37,30 @@
       <div class="srow">
         <div class="label">Safety check</div>
         <div class="body"><span class="status sig-grown"><span class="dot"></span><span data-state="gate">4/4 CERTIFIED</span></span>
-          <span class="note">Four clean trading days against a bar set in advance. Proves the machinery is trustworthy — not that it makes money. <a class="gloss" href="../guide/the-gate/">What this means →</a></span></div>
+          <span class="note">Four clean trading sessions against a bar set in advance. Certifies the machinery — not the edge. <a class="gloss" href="../guide/the-gate/">What this means →</a></span></div>
       </div>
       <div class="srow">
-        <div class="label">Does it earn?</div>
-        <div class="body"><span class="status sig-active"><span class="dot"></span><span data-state="edge">PLAUSIBLE · UNCONFIRMED</span></span>
-          <span class="note">A small advantage seems plausible after subtracting luck, but it’s unproven — a best case with real doubts open. <a class="gloss" href="../measured/">See the findings →</a></span></div>
+        <div class="label">The edge</div>
+        <div class="body"><span class="status sig-open"><span class="dot"></span><span data-state="edge">IN FORWARD VALIDATION</span></span>
+          <span class="note">Proven out-of-sample, on live market days, before capital scales behind it. <a class="gloss" href="../measured/">The findings →</a></span></div>
       </div>
       <div class="srow">
-        <div class="label">First real trade</div>
+        <div class="label">First live trade</div>
         <div class="body"><span class="status sig-active"><span class="dot pulse"></span><span data-state="firstFill">PENDING · 06-18</span></span>
-          <span class="note">One contract, by hand, watched the whole time. Asks the one thing no test can: <b>does the real world match the model?</b> Not a verdict — the most informative single event in the project. <a class="gloss" href="../guide/the-fill/">Why →</a></span></div>
+          <span class="note">One contract, by hand, watched the whole time. Asks the one thing no test can: <b>does the real fill match the model?</b> The single most informative event in the project. <a class="gloss" href="../guide/the-fill/">Why →</a></span></div>
       </div>
       <div class="srow">
         <div class="label">Next decision</div>
-        <div class="body"><span class="status sig-open"><span class="dot"></span>UNDECIDED</span>
-          <span class="note">After the trade, three directions stay open — decided once the evidence is in, not before. <a class="gloss" href="../fork/">The Fork →</a></span></div>
+        <div class="body"><span class="status sig-open"><span class="dot"></span>OPEN</span>
+          <span class="note">After the trade, three directions stay open — settled once the evidence is in, not before. <a class="gloss" href="../fork/">The fork →</a></span></div>
       </div>
     </div>
-    <p class="fnote rv">// This snapshot is driven by a single set of values, edited by hand for now. They’re kept coarse on purpose, and never imply a result that isn’t actually in evidence.</p>
+    <p class="fnote rv">// One set of values, edited by hand for now. Kept coarse on purpose, and never implying a result that is not in evidence.</p>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>

@@ -3,54 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What a “shadow stream” is — The Weather Machine</title>
-<meta name="description" content="In plain language: practice trades that risk no money but still build real, forward evidence.">
+<title>Shadow streams — Field Guide — The Weather Machine</title>
+<meta name="description" content="Signals logged live but never traded — real forward evidence with no money at risk.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="guide elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Measured</a><a href="../../trajectory/">Trajectory</a><a href="../../state/">State</a><a href="../../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Findings</a><a href="../../state/">State</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">Field guide · the basics</div>
-    <h1 class="rv">What a “shadow stream” <span class="grow">is.</span></h1>
-    <p class="plain lead rv">A shadow stream is the system <b>playing along in real time without any money on the line.</b> As the market moves, it records every trade it <i>would</i> have made — when it would have bought, when it would have sold, how it turned out — exactly as if it were live. No money is risked; the evidence is still real.</p>
+    <h1 class="rv">Shadow <span class="grow">streams.</span></h1>
+    <p class="plain lead rv">A shadow stream runs a strategy live during market hours and records every trade it would have made — without placing any of them.</p>
   </header>
   <main>
   <section class="col">
-    <p class="plain rv">Why bother with pretend trades? Because you can’t settle whether an idea works by arguing about it — you have to let it face days it has never seen before. A shadow stream lets a new idea quietly build up that forward track record, safely, before a single real dollar is ever at risk.</p>
-    <p class="plain rv">Ideas that keep proving themselves can later “graduate” to real money. Ideas that don’t are dropped — cheaply, and without anyone having lost anything.</p>
+    <p class="plain rv">It is the middle ground between a backtest and real trading. A backtest replays old data, which a strategy can be quietly tuned to flatter. Real trading risks money. A shadow stream takes the live market as it happens — the same prices, the same timing — and logs what the strategy decides, so the evidence accrues forward without a dollar exposed.</p>
     <div class="callout rv">
-      <div class="t">Why it’s powerful</div>
-      <p>It’s the difference between “this should work” and “this has been quietly proving itself for months.” Only the second one earns real money.</p>
+      <div class="t">Why it matters</div>
+      <p>Forward evidence is the only kind that proves a strategy wasn't just fitted to the past. Shadow streams generate it cheaply, which is what lets candidate ideas compete before any of them earns real capital.</p>
     </div>
-    <details class="deeper rv">
-      <summary>Go deeper — how the evidence is kept honest</summary>
-      <div class="body">
-        <p>Each shadow stream is compared against a plain control, trade-for-trade, so the question is always “did this idea beat the baseline on the same days?” — not “did it make a number go up?”</p>
-        <p>Crucially, watching an idea (gathering evidence) is kept separate from <b>choosing</b> to fund it. Wide observation is free; promotion to real capital is a separate, stricter gate. Mixing the two is how a system fools itself. See <a class="gloss" href="../../method/">The Method</a>.</p>
-      </div>
-    </details>
-    <div class="nextrow rv"><a href="../the-loop/">Next: the correction loop →</a><a href="../../machine/">See what’s built →</a><a href="../">All of the Field Guide →</a></div>
+    <p class="plain rv">A signal that fires cleanly but couldn't actually be traded — too thin a market, too wide a spread — shows up here as a finding, not a silent failure. That is information, and it is kept.</p>
+    <div class="nextrow rv">
+      <a href="../the-loop/">The correction loop →</a>
+      <a href="../../machine/">The machine →</a>
+      <a href="../the-edge/">The edge →</a>
+    </div>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../../colophon/">colophon</a></p></footer>
 <script src="../../state.js"></script>
 <script src="../../site.js"></script>
 </body>

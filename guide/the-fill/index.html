@@ -3,54 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What “the fill” is — The Weather Machine</title>
-<meta name="description" content="In plain language: what a 'fill' is, what tranche-zero means, and why a single real trade matters more than any historical test.">
+<title>The fill — Field Guide — The Weather Machine</title>
+<meta name="description" content="What a fill is, and why the first real one — a single contract — carries more information than any backtest.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
 </head>
-<body class="guide elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="surface">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Measured</a><a href="../../trajectory/">Trajectory</a><a href="../../state/">State</a><a href="../../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Findings</a><a href="../../state/">State</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">Field guide · the basics</div>
-    <h1 class="rv">What “the fill” <span class="grow">is.</span></h1>
-    <p class="plain lead rv">A “fill” is just slang for a trade actually going through — you wanted to buy, and you got it, at some price. The “first fill” (the project calls it <b>tranche-zero</b>) is the very first one done with real money: a single contract, placed by hand, watched the whole time.</p>
+    <h1 class="rv">The <span class="grow">fill.</span></h1>
+    <p class="plain lead rv">A fill is a trade actually executing in the live market — the moment an intention becomes a real position at a real price.</p>
   </header>
   <main>
   <section class="col">
-    <p class="plain rv">Why would one tiny trade matter so much? Because every test up to now <b>assumed</b> the system could buy and sell at the prices it saw on the screen. Reality charges a quiet toll: by the time your order actually reaches the market, the price may have drifted, so you pay a little more than you hoped. No amount of testing against history can measure that toll for you — only a real order can.</p>
-    <p class="plain rv">So the first fill answers one specific question that no backtest ever could: <b>when the system thinks it can trade at a price, can it really?</b></p>
+    <p class="plain rv">Backtests assume that intention and execution are the same thing: the model wants to buy at a price, so it buys at that price. Reality charges a toll. By the time an order reaches the market the price has often moved, and at small option premiums that gap can swallow the entire advantage. No amount of historical testing measures it — only a real trade does.</p>
     <div class="callout rv">
-      <div class="t">What it is — and isn’t</div>
-      <p>It is <b>not</b> a verdict on whether the system makes money. It’s one honest data point about whether the real world behaves like the model. It happens to be the single most informative thing the project can do right now.</p>
+      <div class="t">Why one contract matters</div>
+      <p>The first fill is a single contract, placed by hand and watched the whole time. It answers one question nothing else can: does the real fill match the model? It settles nothing about whether the strategy earns — it measures the toll, once, for real.</p>
     </div>
-    <details class="deeper rv">
-      <summary>Go deeper — the toll, and why it’s being re-measured</summary>
-      <div class="body">
-        <p>The “toll” has two parts: the delay between deciding and executing (latency) and the price you give up crossing the spread (slippage). An early estimate of the delay turned out to be partly a measurement quirk, so that number is currently being recomputed rather than trusted.</p>
-        <p>What does survive: a roughly fixed cost hurts far more on cheap contracts than expensive ones — which points toward only trading above a certain price floor. That’s a refinement, not a reason to scrap the approach. See <a class="gloss" href="../../measured/">What’s Measured</a> and the live <a class="gloss" href="../../state/">Current State</a>.</p>
-      </div>
-    </details>
-    <div class="nextrow rv"><a href="../shadow-streams/">Next: shadow streams →</a><a href="../../state/">See the live state →</a><a href="../">All of the Field Guide →</a></div>
+    <p class="plain rv">That single data point is why the careful record-keeping has to exist first. A real fill that nobody captured in full is a measurement wasted.</p>
+    <div class="nextrow rv">
+      <a href="../../state/">The live state →</a>
+      <a href="../the-edge/">The edge →</a>
+      <a href="../../trajectory/">What comes next →</a>
+    </div>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../../colophon/">colophon</a></p></footer>
 <script src="../../state.js"></script>
 <script src="../../site.js"></script>
 </body>

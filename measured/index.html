@@ -3,63 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What’s Measured — The Weather Machine</title>
-<meta name="description" content="Three foundational assumptions, tested against data before building further. None flattered the plan — stated at the honest limit of what's known.">
+<title>Findings — The Weather Machine</title>
+<meta name="description" content="Three load-bearing assumptions, measured against data before building on them. Each returned a finding that reshaped the design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="elev-soil">
-<div class="bg" aria-hidden="true"></div>
-<canvas id="roots" aria-hidden="true"></canvas>
-<div class="soilscrim" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="deep">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a><a href="../guide/">Field Guide</a><a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/" aria-current="page">Measured</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/" aria-current="page">Findings</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a><a href="../guide/">Field Guide</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
-    <div class="kicker rv">What’s measured · the foundations</div>
-    <h1 class="rv">Three assumptions, <span class="grow">tested.</span></h1>
-    <p class="sub rv">Before building further, three big assumptions were checked against real data. Each came back as a <b>finding that reshaped the plan</b> rather than confirming it. They’re written here at the honest limit of what’s actually known — not the flattering version.</p>
+    <div class="kicker rv">Findings · the foundations</div>
+    <h1 class="rv">Tested before <span class="grow">building on them.</span></h1>
+    <p class="sub rv">Three load-bearing assumptions were measured against existing data. Each returned a finding — and each <b>reshaped the design rather than confirming it</b>. Stated at the honest limit of what is known.</p>
   </header>
+
   <main>
   <section id="findings" class="col">
-    <div class="eyebrow rv">01 &nbsp;/&nbsp; The findings</div>
+    <div class="eyebrow rv">01 / The findings</div>
     <div class="stack rv">
       <div class="row panel">
-        <div class="q">Does the strategy really have an <a class="gloss" href="../guide/the-edge/">edge</a>?</div>
-        <div class="v"><b class="vm">MAYBE — NOT PROVEN.</b> After fairly subtracting the luck of picking the best-looking option, a small advantage still seems to survive. But that number is a <b>best case</b>, not a verdict: three bigger doubts are still open — hidden fine-tuning, a “couldn’t really have known to pick these” problem, and a limited budget of honest tests. Not disproven is not the same as proven.</div>
+        <div class="q">Does the champion's edge survive scrutiny?</div>
+        <div class="v"><b class="vc">A FEW DOLLARS PER TRADE — A CONSERVATIVE BOUND.</b> Edge — the average per-trade advantage after costs — survives selection-deflation to a few dollars. Three sources of optimism remain explicitly bounded, not hidden: parameter choice inside each candidate, a point-in-time universe-selection effect, and the finite comparison budget. Validation continues forward, out-of-sample.</div>
       </div>
       <div class="row panel">
-        <div class="q">Can it really trade at the prices it assumes?</div>
-        <div class="v"><b class="vm">SPEED IS A THREAT — AND BEING RE-MEASURED.</b> An early estimate of the hidden cost of being a moment too slow turned out to be partly a measurement glitch, so that number is <b>being recomputed, not trusted</b>. What does hold: a roughly fixed cost hurts cheap trades far more than expensive ones — pointing toward only trading above a price floor. <a class="gloss" href="../guide/the-fill/">Why this matters →</a></div>
+        <div class="q">Is the fill model right?</div>
+        <div class="v"><b class="vm">LATENCY IS THE BINDING EXECUTION RISK.</b> A roughly fixed entry cost is negligible at high premium and decisive at low — which sets a <b>premium floor</b> on tradeable entries. The first estimate traced to a polling-cadence artifact; the measurement is being re-run against the real reaction band.</div>
       </div>
       <div class="row panel">
-        <div class="q">Are its five test-streams really five different bets?</div>
-        <div class="v"><b class="vc">NO — MORE LIKE TWO-AND-A-BIT.</b> Small variations of a single idea barely count as separate bets. Real variety needs genuinely different ideas, not more tweaks of the same one. <a class="gloss" href="../guide/shadow-streams/">What a test-stream is →</a></div>
+        <div class="q">Are five live streams five strategies?</div>
+        <div class="v"><b class="vc">EFFECTIVE INDEPENDENCE ≈ 2.3 OF 5.</b> Variants of one signal add almost no independent information. Genuine diversity requires different signals, instruments, or horizons — not more exit variants.</div>
       </div>
     </div>
-    <p class="fnote rv">// A note on honesty: one of these checks tested its own assumptions instead of taking them for granted — the discipline applies to the measurements too, not just the trades.</p>
+    <p class="fnote rv">// A method note: one selection check tested its own distributional assumption rather than assuming it. The discipline applies to the measurements too.</p>
   </section>
+
   <section id="calendar" class="col">
-    <div class="eyebrow rv">02 &nbsp;/&nbsp; The patience finding</div>
-    <h2 class="rv">Proving one fix takes months, not weeks.</h2>
-    <p class="lede rv">At the current rate of trades, proving a single small improvement to a real standard of confidence needs <strong>hundreds to a couple thousand</strong> future trades — on the order of <strong>seven months to a year and a half</strong> of patient waiting, per fix. That’s the real price of honesty here, and it’s why the system is built to <strong>keep what proves itself early and drop what fails early</strong>, rather than waiting out a fixed clock.</p>
+    <div class="eyebrow rv">02 / The calendar</div>
+    <h2 class="rv">One correction takes months to prove, not weeks.</h2>
+    <p class="lede rv">At the current signal rate, validating a single few-dollar-per-trade term to adequate statistical power needs <strong>hundreds to a couple thousand forward observations</strong> — on the order of <strong>seven months to over a year</strong> per term. The ladder graduates early or kills early on accruing evidence, rather than waiting out a fixed term.</p>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>

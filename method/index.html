@@ -4,77 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Method — The Weather Machine</title>
-<meta name="description" content="Built like a weather model: improve by recording your own mistakes and fixing one at a time, proven on days you've never seen.">
+<meta name="description" content="An error-correction engine: a baseline strategy, then one validated correction term at a time, each earned on out-of-sample data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="elev-canopy">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="deep">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a><a href="../guide/">Field Guide</a><a href="../method/" aria-current="page">Method</a><a href="../machine/">Machine</a><a href="../measured/">Measured</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../method/" aria-current="page">Method</a><a href="../machine/">Machine</a><a href="../measured/">Findings</a><a href="../trajectory/">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a><a href="../guide/">Field Guide</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">The method</div>
-    <h1 class="rv">Built like a <span class="grow">forecast model.</span></h1>
-    <p class="sub rv">Weather prediction didn’t get accurate from one brilliant model. It got accurate from plain ones that <b>wrote down where they were wrong</b> and added the single fix that would’ve caught each mistake — repeated for decades. This system works the same way, pointed at markets. <a class="gloss" href="../guide/the-loop/">New to this idea? Start here.</a></p>
+    <h1 class="rv">An error-<wbr>correction engine.</h1>
+    <p class="sub rv">Forecasting became reliable by recording where each model was wrong and adding the one term that would have caught the miss. The same architecture runs here — a book of strategies, each correcting itself <b>forward</b>.</p>
   </header>
+
   <main>
-  <section id="idea" class="col">
-    <div class="eyebrow rv">01 &nbsp;/&nbsp; The engine</div>
-    <h2 class="rv">It improves by fixing its own mistakes.</h2>
-    <p class="lede rv">The goal isn’t one clever strategy; it’s a <strong>collection of independent strategies</strong>, each correcting its own errors over time. Today’s strategy is treated, on purpose, as the <strong>crude first version</strong> — something to improve, not to defend. Each later addition has to catch a specific, recurring mistake the system keeps making. Getting <em>more</em> capable over time is the goal; the discipline below is what keeps that from turning into self-deception.</p>
-    <div class="rule panel rv">
-      <p>A fix earns its place only by catching a real, named mistake on data the system has never seen. Build all the machinery you want — make no decision against old data.</p>
-      <div class="src">The governing rule · what separates a weather machine from a lucky backtest</div>
+  <section id="engine" class="col">
+    <div class="eyebrow rv">01 / The engine</div>
+    <h2 class="rv">The champion is the crude first model.</h2>
+    <p class="lede rv">The aim is not one clever model. It is a <strong>book of independent strategies</strong>, each running its own error-correction loop. Strategy&nbsp;#1 is the deliberate baseline. Every later addition is a <strong>correction term</strong> — admitted because it catches a specific, recurring class of miss, not because it improves a backtest.</p>
+    <div class="callout rv">
+      <div class="t">The governing rule</div>
+      <p>A correction term earns its place only by catching a named miss in data the system has never seen.</p>
     </div>
   </section>
+
   <section id="loop" class="col">
-    <div class="eyebrow rv">02 &nbsp;/&nbsp; The loop</div>
-    <h2 class="rv">The same five steps, turned over and over.</h2>
+    <div class="eyebrow rv">02 / The loop</div>
+    <h2 class="rv">One cycle, turned over and over.</h2>
     <div class="loop-track rv">
-      <div class="lstep panel"><div class="ln">01 · TRADE</div><h4>Make the move</h4><p>A real trade, or a recorded one — a signal acted on, or logged as one that would have fired.</p></div>
-      <div class="lstep panel fuel"><div class="ln">02 · LOG THE MISS</div><h4>Write down the mistake</h4><p>The mistakes are the fuel. Nothing improves without an honest record of being wrong.</p></div>
-      <div class="lstep panel"><div class="ln">03 · PROPOSE A FIX</div><h4>One correction</h4><p>The single change that would have caught that exact miss — a fresh idea, not a tweak.</p></div>
-      <div class="lstep panel"><div class="ln">04 · TEST FORWARD</div><h4>On unseen days</h4><p>Try it on days it has never touched. Never rescued by re-reading the past.</p></div>
-      <div class="lstep panel"><div class="ln">05 · KEEP / DROP</div><h4>Earned, or gone</h4><p>Cheap to drop, hard to keep. It survives only provisionally; one failure ends it.</p></div>
+      <div class="lstep panel"><div class="ln">01 · TRADE</div><h4>Take the position</h4><p>Acted on live, or logged as a signal that would have fired.</p></div>
+      <div class="lstep panel fuel"><div class="ln">02 · LOG THE MISS</div><h4>Record where it was wrong</h4><p>The miss is the fuel. Nothing improves without an honest record of the failure.</p></div>
+      <div class="lstep panel"><div class="ln">03 · PROPOSE THE TERM</div><h4>One correction</h4><p>The single term that would have caught that named miss — a fresh hypothesis, not a tweak.</p></div>
+      <div class="lstep panel"><div class="ln">04 · FORWARD-TEST</div><h4>On unseen days</h4><p>Shadowed forward against data it has never touched. Never rescued by re-reading the past.</p></div>
+      <div class="lstep panel"><div class="ln">05 · PROMOTE / KILL</div><h4>Earned, or retired</h4><p>Cheap to kill, hard to promote. A failure retires it; survival is always provisional.</p></div>
     </div>
-    <p class="fnote rv">// No named mistake → no fix → it doesn’t belong on the roadmap. The loop can’t turn faster than real trading days arrive — the limit is the calendar, not effort.</p>
+    <p class="fnote rv">// A miss with no name is not a correction term and does not enter the roadmap. The loop turns no faster than market days accrue.</p>
   </section>
+
   <section id="doctrine" class="col">
-    <div class="eyebrow rv">03 &nbsp;/&nbsp; The search rule</div>
-    <h2 class="rv">Look widely. Bet narrowly.</h2>
-    <p class="lede rv">Two activities are kept strictly apart, because mixing them is exactly how a system fools itself: <strong>learning</strong> from lots of ideas (free, do it widely), and <strong>choosing</strong> which idea to fund with real money (expensive, do it carefully). Every candidate gets watched and learned from; almost none get funded.</p>
+    <div class="eyebrow rv">03 / The search rule</div>
+    <h2 class="rv">Wide over the unknown. Narrow at the evidenced gate.</h2>
+    <p class="lede rv">Two activities stay strictly apart, because collapsing them is how a system fools itself.</p>
     <div class="cards rv">
-      <div class="card panel grown"><div class="ct">[ Learning — wide, free ]</div><h3>Watch everything</h3><p>Every idea is recorded and studied. An idea that’s sound but too costly to trade is a useful <b>finding</b>, not a silent reject.</p></div>
-      <div class="card panel active"><div class="ct">[ Choosing — narrow, costly ]</div><h3>Fund almost nothing</h3><p>Promoting anything to real money is a separate, pre-committed test with a high bar. Watching informs that test without being it.</p></div>
+      <div class="card panel grown"><div class="ct">Characterization · wide, free</div><h3>Learning</h3><p>Every candidate enters as data. Its properties are logged per signal, never gated on. A sound signal whose costs eat it is a <b>finding</b>, not a silent rejection.</p></div>
+      <div class="card panel active"><div class="ct">Selection · narrow, deflated</div><h3>Promotion</h3><p>Funding a strategy is a separate, pre-committed gate under full multiple-comparisons deflation. The wide net <b>informs</b> that gate without <b>being</b> it.</p></div>
     </div>
-    <div class="rule panel rv">
-      <p>The wide search feeds <b>learning</b> — never funding directly. Collapse the two and you sneak luck back in at full scale.</p>
-      <div class="src">The load-bearing line</div>
+    <div class="callout rv">
+      <div class="t">The load-bearing line</div>
+      <p>The wide net feeds learning, never selection. Characterization is free; comparison spends statistical power; the two stay on separate layers.</p>
     </div>
   </section>
+
   <section id="budget" class="col">
-    <div class="eyebrow rv">04 &nbsp;/&nbsp; Why the discipline is strict</div>
-    <h2 class="rv">The past is a budget you can only spend down.</h2>
-    <p class="lede rv">Every test run against the same slice of market history uses up one of a <strong>limited number of honest tries</strong> — and most are already spent. Test it enough and any system will look brilliant on paper and behave like a coin flip live. So the rule is never “keep it simple.” The aim is <strong>capable and proven, built forward</strong> — and honesty about that is the only real defense.</p>
-    <div class="nextrow rv"><a href="../guide/the-loop/">Plain-English version →</a><a href="../measured/">What’s been tested →</a></div>
+    <div class="eyebrow rv">04 / The cost of the past</div>
+    <h2 class="rv">History is a budget that only spends down.</h2>
+    <p class="lede rv">Each test against the fixed historical window spends one comparison from a finite budget — roughly twenty are already gone. Mine it hard enough and any system looks certain in backtest and behaves like noise live. The target is <strong>complex and forward-validated</strong>, one term at a time; the discipline exists to protect the loop, not to keep things simple.</p>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>

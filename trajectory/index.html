@@ -4,62 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Trajectory — The Weather Machine</title>
-<meta name="description" content="The road ahead, in unlock order: a ladder where the bar rises with the money at risk, and only forward evidence moves anything up it.">
+<meta name="description" content="The road ahead in unlock order: a ladder where the bar rises with the capital at risk, and only forward evidence moves anything up it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="elev-loam">
-<div class="bg" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<nav class="nav">
-  <a class="brand" href="../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+<body class="shallow">
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="../"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
-  <div class="navlinks">
-    <a href="../">Forecast</a><a href="../guide/">Field Guide</a><a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Measured</a><a href="../trajectory/" aria-current="page">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a>
-  </div>
-</nav>
+  <nav class="routes">
+    <a href="../method/">Method</a><a href="../machine/">Machine</a><a href="../measured/">Findings</a><a href="../trajectory/" aria-current="page">Trajectory</a><a href="../state/">State</a><a href="../creator/">Creator</a><a href="../guide/">Field Guide</a>
+  </nav>
+</header>
+
 <div class="wrap">
   <header class="phead col">
     <div class="kicker rv">The trajectory · in unlock order</div>
     <h1 class="rv">Earned in <span class="grow">unlock order.</span></h1>
-    <p class="sub rv">Progress comes from the <a class="gloss" href="../guide/the-loop/">loop</a> turning, not from any single build. Each turn adds one proven step. <b>Most of what matters is still ahead</b> — unlocked in order, never rushed.</p>
+    <p class="sub rv">Progress comes from the <a class="gloss" href="../guide/the-loop/">loop</a> turning, not from any single build. Each turn adds one validated step. <b>Most of what matters is still ahead</b> — unlocked in order, never rushed.</p>
   </header>
+
   <main>
   <section class="col">
-    <div class="eyebrow rv">01 &nbsp;/&nbsp; The ladder</div>
-    <h2 class="rv">A ladder — the bar rises with the money.</h2>
-    <p class="lede rv">Moving up isn’t a fixed waiting period; it’s a running test. An idea can <strong>climb early</strong> once the evidence is strong enough, or be <strong>cut early</strong> once it’s clearly going nowhere. Each rung that risks more money <strong>demands stronger proof</strong> than the last. The one unbreakable rule: only real, forward results move anything up — <strong>never the calendar</strong>.</p>
+    <div class="eyebrow rv">01 / The ladder</div>
+    <h2 class="rv">A ladder — the bar rises with the capital.</h2>
+    <p class="lede rv">Moving up is not a fixed waiting period; it is a running test. A term <strong>climbs early</strong> once the forward evidence is strong enough, or is <strong>cut early</strong> once it is clearly going nowhere. Each rung that risks more capital <strong>demands stronger proof</strong> than the last. The one unbreakable rule: only forward results move anything up — <strong>never the calendar</strong>.</p>
     <div class="road rv">
-      <div class="stage panel"><div class="sn">0</div><div><h4>Pass the safety check <span class="tag2 t-done">Done</span></h4><p>Four clean trading days. Proves the machinery, not the profit.</p></div></div>
-      <div class="stage panel"><div class="sn">1</div><div><h4>Test the foundations <span class="tag2 t-done">Done</span></h4><p>The checks that turned three assumptions into findings — each with a decision wired in advance.</p></div></div>
-      <div class="stage panel now"><div class="sn">2</div><div><h4>First real trade <span class="tag2 t-now">Now</span></h4><p>One contract, by hand. Tests the one thing no backtest can — does the real world match the model?</p></div></div>
-      <div class="stage panel"><div class="sn">3</div><div><h4>Build the record-keeping <span class="tag2 t-now">Before the trade</span></h4><p>The tools that capture every mistake in detail. They must exist before the first trade, or that rare data point is wasted.</p></div></div>
-      <div class="stage panel"><div class="sn">4</div><div><h4>The honesty tools <span class="tag2 t-future">Queued</span></h4><p>The keep-early / cut-early ladder and the statistics that stop the system fooling itself.</p></div></div>
-      <div class="stage panel"><div class="sn">5</div><div><h4>First fixes compete <span class="tag2 t-future">Next</span></h4><p>Candidate improvements run as side-by-side practice streams against a plain control. The first real turn of the loop.</p></div></div>
-      <div class="stage panel"><div class="sn">6</div><div><h4>Widen the field <span class="tag2 t-future">Later</span></h4><p>A bigger set of names, screened for genuine variety and easy trading. New names start as data-only — never straight to live.</p></div></div>
-      <div class="stage panel dest"><div class="sn">7</div><div><h4>Many strategies, one portfolio <span class="tag2 t-dest">Destination</span></h4><p>Several genuinely different strategies, money spread across them, the luck of choosing them accounted for. Months to years out. The north star.</p></div></div>
-      <div class="stage panel"><div class="sn">∞</div><div><h4>Sizing up <span class="tag2 t-future">Always on</span></h4><p>The one-contract limit is a temporary safety brake, not the real plan. Size grows step by step — on proof, never on dates.</p></div></div>
+      <div class="stage panel"><div class="sn">0</div><div><h4>Pass the safety check <span class="tag2 t-done">Done</span></h4><p>Four clean trading sessions. Certifies the machinery, not the edge.</p></div></div>
+      <div class="stage panel"><div class="sn">1</div><div><h4>Test the foundations <span class="tag2 t-done">Done</span></h4><p>The reads that turned three assumptions into findings — each with a decision wired in advance.</p></div></div>
+      <div class="stage panel now"><div class="sn">2</div><div><h4>First live trade <span class="tag2 t-now">Now</span></h4><p>One contract, by hand. Tests the one thing no backtest can — does the real fill match the model?</p></div></div>
+      <div class="stage panel"><div class="sn">3</div><div><h4>Build the record-keeping <span class="tag2 t-now">Before the trade</span></h4><p>The tools that capture every miss in detail. They must exist before the first trade, or that rare data point is lost.</p></div></div>
+      <div class="stage panel"><div class="sn">4</div><div><h4>The honesty tools <span class="tag2 t-future">Queued</span></h4><p>The graduate-early / kill-early ladder and the statistics that keep the system from fooling itself.</p></div></div>
+      <div class="stage panel"><div class="sn">5</div><div><h4>First corrections compete <span class="tag2 t-future">Next</span></h4><p>Candidate terms run as parallel shadow arms against a control. The first real turn of the loop.</p></div></div>
+      <div class="stage panel"><div class="sn">6</div><div><h4>Widen the field <span class="tag2 t-future">Later</span></h4><p>A broader set of names, screened for genuine independence and tradeable liquidity. New names enter as data-only — never straight to live.</p></div></div>
+      <div class="stage panel dest"><div class="sn">7</div><div><h4>Many strategies, one portfolio <span class="tag2 t-dest">Destination</span></h4><p>Several genuinely different strategies, capital spread across them, the luck of choosing them priced in. Months to years out. The north star.</p></div></div>
+      <div class="stage panel"><div class="sn">∞</div><div><h4>Sizing up <span class="tag2 t-future">Always on</span></h4><p>The one-contract cap is a temporary trust throttle, not the plan. Size grows rung by rung — on proof, never on dates.</p></div></div>
     </div>
   </section>
+
   <section class="col">
-    <div class="eyebrow rv">02 &nbsp;/&nbsp; Put down on purpose</div>
-    <h2 class="rv">What’s been set aside, and why.</h2>
+    <div class="eyebrow rv">02 / Put down on purpose</div>
+    <h2 class="rv">What's been set aside, and why.</h2>
     <div class="stack rv">
-      <div class="row panel"><div class="term">A LEARNED MODEL</div><div class="def">Training a model on the market’s history — <b>shelved</b>. It’s a years-long effort, and that history is already too picked-over to learn from honestly.</div></div>
-      <div class="row panel"><div class="term">A SECOND STRATEGY</div><div class="def">An unrelated new approach — <b>parked</b>. It would cost a whole fresh budget of honest tests; not started until the current loop has earned it.</div></div>
+      <div class="row panel"><div class="term">A LEARNED MODEL</div><div class="def">Training a model on the market's history — <b>shelved</b>. A years-long effort, and that history is already too mined to learn from honestly.</div></div>
+      <div class="row panel"><div class="term">A SECOND STRATEGY</div><div class="def">An unrelated new approach — <b>parked</b>. It would cost a whole fresh comparison budget; not started until the current loop has earned it.</div></div>
     </div>
-    <p class="fnote rv">// Setting something aside with a written reason is part of the discipline: a roadmap that only ever adds is one that never learned to say no.</p>
+    <p class="fnote rv">// A roadmap that only ever adds is one that never learned to say no. Setting something aside with a written reason is part of the discipline.</p>
   </section>
   </main>
 </div>
-<footer class="siteft">
-  <div class="col">
-    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../colophon/">Why, and what’s shown →</a></p>
-    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
-  </div>
-</footer>
+
+<footer class="siteft"><p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="../colophon/">colophon</a></p></footer>
 <script src="../state.js"></script>
 <script src="../site.js"></script>
 </body>
