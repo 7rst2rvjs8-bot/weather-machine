@@ -9,23 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   THE WEATHER MACHINE — force-directed living network
-   A connectome of the system itself. Cyber-bioluminescent.
-   Hand-edit state in the STATE block at foot of <script>.
+   THE WEATHER MACHINE — bio-digital living network
+   The organism glows; the content stays legible; the copy stays
+   honest. Hand-edit state in the STATE block at foot of <script>.
    ============================================================ */
 
 :root{
-  --void:#040409;
-  --void-2:#08080F;
-  --panel:rgba(12,13,24,0.50);
+  --void:#06060E;
+  --void-2:#0A0A16;
+  --panel:rgba(13,14,26,0.50);
   --line:rgba(120,160,220,0.12);
   --line-hot:rgba(0,229,255,0.22);
 
-  --cyan:#00E5FF;       /* structure / brand / links */
+  --cyan:#00E5FF;       /* living tissue / settled / certified */
   --cyan-soft:#4CC9F0;
-  --green:#33F0A3;      /* certified / done / healthy */
   --magenta:#FF2E92;    /* active signal / ahead / the fill */
-  --purple:#9B6BE8;     /* open / undecided / depth */
+  --purple:#9B6BE8;     /* depth / open / undecided */
 
   --text:#E4E7FF;
   --muted:#9AA0C8;
@@ -43,25 +42,30 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{font-family:var(--body);color:var(--text);line-height:1.55;background:var(--void);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
+/* the organism (fixed, behind everything) */
 #organism{position:fixed;inset:0;z-index:0;display:block;pointer-events:none}
+/* legibility scrim + faint vignette so glow never eats the text */
 .scrim{position:fixed;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(135% 105% at 50% 32%, transparent 46%, rgba(4,4,9,0.52) 100%),
-    linear-gradient(180deg, rgba(4,4,9,0.5) 0%, transparent 20%, transparent 80%, rgba(4,4,9,0.42) 100%)}
+    radial-gradient(130% 100% at 50% 35%, transparent 40%, rgba(6,6,14,0.55) 100%),
+    linear-gradient(180deg, rgba(6,6,14,0.55) 0%, transparent 22%, transparent 78%, rgba(6,6,14,0.5) 100%)}
+/* organic grain */
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 .wrap{position:relative;z-index:3}
 .col{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 
+/* reveal */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
+/* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-  padding:15px var(--gutter);background:linear-gradient(180deg,rgba(4,4,9,0.72),transparent);backdrop-filter:blur(8px);
+  padding:15px var(--gutter);background:linear-gradient(180deg,rgba(6,6,14,0.7),transparent);backdrop-filter:blur(8px);
   border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-nav.stuck{border-bottom-color:var(--line);background:rgba(4,4,9,0.85)}
+nav.stuck{border-bottom-color:var(--line);background:rgba(7,7,18,0.82)}
 .mark{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;color:var(--text);display:flex;align-items:center;gap:10px}
 .mark .node{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan),0 0 4px #fff}
 .navlinks{display:flex;gap:22px}
@@ -77,11 +81,12 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 .lede{color:var(--muted);font-size:clamp(15px,1.5vw,17px);max-width:62ch;margin-top:18px}
 .lede strong{color:var(--text);font-weight:500}
 
+/* hero */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:84px}
 .hero .tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
 .hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(40px,9vw,108px);line-height:.95;letter-spacing:-.03em;text-shadow:0 0 50px rgba(0,229,255,.18)}
 .hero h1 span{display:block}
-.hero h1 .glow{color:transparent;background:linear-gradient(96deg,var(--cyan),#8FE9FF 38%,var(--magenta));-webkit-background-clip:text;background-clip:text;text-shadow:none}
+.hero h1 .glow{color:transparent;background:linear-gradient(96deg,var(--cyan),#8FE9FF 40%,var(--magenta));-webkit-background-clip:text;background-clip:text;text-shadow:none}
 .hero .thesis{font-size:clamp(16px,1.8vw,20px);color:var(--muted);max-width:52ch;margin-top:30px;line-height:1.6}
 .hero .thesis b{color:var(--text);font-weight:500}
 
@@ -93,15 +98,16 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 .telem .v{font-family:var(--mono);font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px}
 .dot{width:8px;height:8px;border-radius:50%;flex:none}
 .d-cyan{color:var(--cyan)}.d-cyan .dot{background:var(--cyan);box-shadow:0 0 9px var(--cyan)}
-.d-green{color:var(--green)}.d-green .dot{background:var(--green);box-shadow:0 0 9px var(--green)}
 .d-mag{color:var(--magenta)}.d-mag .dot{background:var(--magenta);box-shadow:0 0 9px var(--magenta)}
 .d-pur{color:var(--purple)}.d-pur .dot{background:transparent;border:1px solid var(--purple);box-shadow:0 0 7px rgba(155,107,232,.5)}
 @media(max-width:560px){.telem .cell{flex-basis:50%;border-right:none;border-bottom:1px solid var(--line)}}
 
+/* governing rule */
 .rule{margin-top:42px;padding:28px 30px;max-width:62ch;border-left:2px solid var(--cyan);box-shadow:-14px 0 40px -20px rgba(0,229,255,.4)}
 .rule p{font-family:var(--sans);font-size:clamp(18px,2vw,23px);line-height:1.38;color:var(--text);font-weight:500}
 .rule .src{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:16px}
 
+/* the loop */
 .loop{margin-top:44px}
 .loop-track{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 @media(max-width:880px){.loop-track{grid-template-columns:repeat(2,1fr)}}
@@ -115,16 +121,18 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 .loop-foot .cyc{color:var(--magenta)}
 .loop-foot b{color:var(--text);font-weight:500}
 
+/* cards */
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:42px}
 @media(max-width:720px){.cards{grid-template-columns:1fr}}
 .card{padding:26px}
 .card .ct{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
-.card.cert .ct{color:var(--green)} .card.cert{border-color:rgba(51,240,163,.22)}
+.card.cool .ct{color:var(--cyan)} .card.cool{border-color:var(--line-hot)}
 .card.hot .ct{color:var(--magenta)} .card.hot{border-color:rgba(255,46,146,.22)}
 .card h3{font-family:var(--sans);font-weight:600;font-size:19px;margin-bottom:10px;letter-spacing:-.01em}
 .card p{color:var(--muted);font-size:13.5px}
 .card p b{color:var(--text);font-weight:500}
 
+/* arch + findings (shared) */
 .stack{margin-top:42px;display:grid;gap:12px}
 .row{display:grid;grid-template-columns:185px 1fr;gap:22px;padding:20px 24px;align-items:baseline}
 @media(max-width:620px){.row{grid-template-columns:1fr;gap:7px}}
@@ -137,6 +145,7 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 .v .vm{color:var(--magenta)} .v .vc{color:var(--cyan)}
 .fnote{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px;letter-spacing:.02em;line-height:1.6}
 
+/* state */
 .statepanel{margin-top:42px;overflow:hidden}
 .statepanel .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:16px 24px;border-bottom:1px solid var(--line)}
 .statepanel .head .t{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--text)}
@@ -153,6 +162,7 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 @keyframes pulse{0%,100%{box-shadow:0 0 9px var(--magenta)}50%{box-shadow:0 0 18px var(--magenta),0 0 4px #fff}}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}}
 
+/* roadmap */
 .road{margin-top:44px;display:grid;gap:10px}
 .stage{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:18px 24px;align-items:start}
 @media(max-width:620px){.stage{grid-template-columns:40px 1fr;gap:13px}}
@@ -160,15 +170,16 @@ h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line
 .stage h4{font-family:var(--sans);font-weight:600;font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:11px;flex-wrap:wrap}
 .stage p{color:var(--muted);font-size:13px;line-height:1.5}
 .tag2{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid currentColor;font-weight:500}
-.t-done{color:var(--green)} .t-now{color:var(--magenta)} .t-future{color:var(--muted)} .t-dest{color:var(--purple)}
+.t-done{color:var(--cyan)} .t-now{color:var(--magenta)} .t-future{color:var(--muted)} .t-dest{color:var(--purple)}
 .stage.now{border-color:rgba(255,46,146,.3);box-shadow:0 0 40px -22px var(--magenta)} .stage.now .sn{color:var(--magenta)}
 .stage.dest .sn{color:var(--purple)}
 
+/* footer */
 footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
 .red{display:grid;grid-template-columns:1fr 1fr;gap:34px}
 @media(max-width:620px){.red{grid-template-columns:1fr;gap:22px}}
 .red h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:13px}
-.red .shows h4{color:var(--green)} .red .hides h4{color:var(--magenta)}
+.red .shows h4{color:var(--cyan)} .red .hides h4{color:var(--magenta)}
 .red ul{list-style:none}
 .red li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;margin-bottom:7px}
 .red li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--faint)}
@@ -194,18 +205,20 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
 
 <div class="wrap">
 
+  <!-- HERO -->
   <header class="hero col">
     <div class="tag">MULTI-STRATEGY OPTIONS SYSTEM · GATE 4/4 · PRE-FIRST-FILL</div>
     <h1><span>THE WEATHER</span><span class="glow">MACHINE</span></h1>
     <p class="thesis">A trading system that learns the way forecasting learned to be accurate — by recording its own misses and adding <b>one correction term at a time</b>, each earned forward on market days it has never seen.</p>
 
     <div class="telem glass">
-      <div class="cell"><div class="k">Gate</div><div class="v d-green"><span class="dot"></span>4/4 CERTIFIED</div></div>
+      <div class="cell"><div class="k">Gate</div><div class="v d-cyan"><span class="dot"></span>4/4 CERTIFIED</div></div>
       <div class="cell"><div class="k">Edge</div><div class="v d-mag"><span class="dot"></span>PLAUSIBLE · UNCONFIRMED</div></div>
       <div class="cell"><div class="k">First fill</div><div class="v d-mag"><span class="dot"></span>PENDING · 06-18</div></div>
     </div>
   </header>
 
+  <!-- IDEA -->
   <section id="idea" class="col">
     <div class="eyebrow rv">01 &nbsp;/&nbsp; The idea</div>
     <h2 class="rv">Forecasting got accurate by being wrong on the record.</h2>
@@ -216,6 +229,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     </div>
   </section>
 
+  <!-- LOOP -->
   <section id="loop" class="col">
     <div class="eyebrow rv">02 &nbsp;/&nbsp; The loop · one error-correction cycle</div>
     <h2 class="rv">Every strategy is the same five-step loop, turned over and over.</h2>
@@ -231,12 +245,13 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     </div>
   </section>
 
+  <!-- MACHINE -->
   <section id="machine" class="col">
     <div class="eyebrow rv">03 &nbsp;/&nbsp; The machine</div>
     <h2 class="rv">An instrument first. The edge is a separate question.</h2>
     <p class="lede rv">Most of the work so far has gone into proving the <strong>harness</strong> — the execution, logging, and test scaffolding — is trustworthy, kept strictly apart from whether the <strong>edge</strong> exists. A clean instrument can still measure an edge that isn't there. Conflating the two is the failure the project is built to avoid.</p>
     <div class="cards rv">
-      <div class="card glass cert"><div class="ct">[ CERTIFIED ]</div><h3>The harness</h3><p>Are the measurements real — clean fills, honest logs, no leakage between what's modeled and what's recorded? This is what the gate certifies.</p></div>
+      <div class="card glass cool"><div class="ct">[ CERTIFIED ]</div><h3>The harness</h3><p>Are the measurements real — clean fills, honest logs, no leakage between what's modeled and what's recorded? This is what the gate certifies.</p></div>
       <div class="card glass hot"><div class="ct">[ UNCONFIRMED ]</div><h3>The edge</h3><p>Does any strategy actually make money? Stated as open. A trustworthy instrument is the precondition for asking — never the answer.</p></div>
     </div>
     <div class="stack rv">
@@ -247,6 +262,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     </div>
   </section>
 
+  <!-- MEASURED -->
   <section id="measured" class="col">
     <div class="eyebrow rv">04 &nbsp;/&nbsp; What's been measured</div>
     <h2 class="rv">Three foundational assumptions, tested. None flattered the plan.</h2>
@@ -259,6 +275,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     <p class="fnote rv">// the calendar finding: proving a single correction term takes hundreds of forward signals — months — not fifty. So the ladder graduates early and kills early, rather than waiting a fixed term.</p>
   </section>
 
+  <!-- STATE -->
   <section id="state" class="col">
     <div class="eyebrow hot rv">05 &nbsp;/&nbsp; Where it stands</div>
     <h2 class="rv">The instrument is ready. The first heartbeat is next.</h2>
@@ -266,7 +283,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
       <div class="head"><div class="t">// CURRENT STATE</div><div class="ts" id="updated">UPDATED — set in STATE</div></div>
       <div class="srow">
         <div class="label">Gate</div>
-        <div class="body"><span class="status d-green"><span class="dot"></span>4/4 CERTIFIED</span>
+        <div class="body"><span class="status d-cyan"><span class="dot"></span>4/4 CERTIFIED</span>
           <span class="note">Consecutive clean days against pre-committed criteria. Certifies the harness — explicitly not the edge.</span></div>
       </div>
       <div class="srow">
@@ -282,6 +299,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     </div>
   </section>
 
+  <!-- ROADMAP -->
   <section id="roadmap" class="col">
     <div class="eyebrow hot rv">06 &nbsp;/&nbsp; The trajectory · in unlock order</div>
     <h2 class="rv">Sophistication comes from the loop turning, not from any single build.</h2>
@@ -299,6 +317,7 @@ footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="col">
     <div class="red">
       <div class="shows">
@@ -340,6 +359,7 @@ document.getElementById('updated').textContent = "UPDATED " + STATE.updated.repl
 const nav = document.getElementById('nav');
 addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 34), {passive:true});
 
+/* scroll reveal */
 (() => {
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
@@ -347,154 +367,113 @@ addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 34), {p
 })();
 
 /* ============================================================
-   THE ORGANISM — a force-directed graph of the system itself.
-   Nodes repel; linked nodes attract; clusters, hubs and branches
-   emerge like a connectome. Hubs carry faint labels. The cursor
-   stirs the field. Reduced-motion -> settle silently, draw once.
+   THE ORGANISM — a flow-field network. Cyan cells drift and
+   cluster into glowing masses; near cells link with tendrils;
+   a magenta subset are active agents that pulse. Cursor gently
+   stirs the field. Reduced-motion -> one static frame.
    ============================================================ */
 (() => {
   const c = document.getElementById('organism');
   const ctx = c.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const HUE = { cyan:[0,229,255], green:[51,240,163], mag:[255,46,146] };
-  const HUB_LABELS = ['META','STRATEGY 1','SHADOW','MISS','TERM','FORWARD','GATE','FILL','PROMOTE','KILL'];
-  let W, H, DPR, nodes = [], edges = [], cx, cy, mouse = {x:-1e4,y:-1e4,on:false};
+  let W, H, DPR, cells = [], mouse = {x:-1e4, y:-1e4, on:false};
+  const LINK = 150, LINK2 = LINK*LINK;
 
   function build(){
     DPR = Math.min(devicePixelRatio || 1, 2);
-    W = innerWidth; H = innerHeight; cx = W/2; cy = H/2;
+    W = innerWidth; H = innerHeight;
     c.width = W*DPR; c.height = H*DPR; c.style.width = W+'px'; c.style.height = H+'px';
     ctx.setTransform(DPR,0,0,DPR,0,0);
-
-    const n = Math.round(Math.min(96, Math.max(48, (W*H)/16000)));
-    const HUBS = Math.min(8, Math.max(5, Math.round(n/12)));
-    nodes = []; edges = [];
-    const R = Math.min(W,H)*0.36;
+    const n = Math.round(Math.min(120, (W*H)/15000));
+    cells = [];
     for(let i=0;i<n;i++){
-      const ang = Math.random()*6.283, rad = Math.sqrt(Math.random())*R;
-      nodes.push({
-        x:cx+Math.cos(ang)*rad, y:cy+Math.sin(ang)*rad, vx:0, vy:0,
-        deg:0, hub:i<HUBS, cluster:0,
-        hue: 'cyan', ph:Math.random()*6.28, sp:0.5+Math.random()*1.0,
-        label: i<HUBS ? HUB_LABELS[i % HUB_LABELS.length] : null
+      const agent = (i % 7 === 0);
+      cells.push({
+        x:Math.random()*W, y:Math.random()*H, vx:0, vy:0,
+        seed:Math.random()*1000,
+        glowR: agent ? 30 : (54 + Math.random()*46),
+        agent, ph:Math.random()*6.28, sp:0.5+Math.random()*1.1
       });
     }
-    const addEdge=(a,b)=>{ if(a===b) return; edges.push([a,b]); nodes[a].deg++; nodes[b].deg++; };
-    const clusters = Array.from({length:HUBS},()=>[]);
-    for(let i=HUBS;i<n;i++){ const h=i%HUBS; nodes[i].cluster=h; addEdge(i,h); clusters[h].push(i); }
-    // intra-cluster cross-links
-    for(let h=0;h<HUBS;h++){
-      const cl = clusters[h];
-      for(let k=0;k<Math.floor(cl.length*0.4);k++){
-        const a = cl[(Math.random()*cl.length)|0], b = cl[(Math.random()*cl.length)|0];
-        addEdge(a,b);
-      }
-    }
-    // inter-hub ring + a couple chords
-    for(let h=0;h<HUBS;h++) addEdge(h,(h+1)%HUBS);
-    addEdge(0, (HUBS/2)|0); addEdge(1, HUBS-1);
-
-    // hues from degree/role: hubs vary; a fraction of leaves are active (magenta) or healthy (green)
-    nodes.forEach((p,i)=>{
-      if(p.hub){ p.hue = (i%3===0)?'green' : (i%3===1)?'mag' : 'cyan'; }
-      else { const r=Math.random(); p.hue = r<0.16?'green' : r<0.26?'mag' : 'cyan'; }
-      p.r = (p.hub ? 3.0 : 1.4) + Math.sqrt(p.deg)*0.9;
-      p.glowR = (p.hub ? 34 : 16) + p.deg*1.6;
-    });
   }
 
-  function settleStep(t){
-    // repulsion (all pairs)
-    for(let i=0;i<nodes.length;i++){
-      const a=nodes[i];
-      for(let j=i+1;j<nodes.length;j++){
-        const b=nodes[j];
-        let dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy;
-        if(d2<1) d2=1;
-        let f = 1500/d2; if(f>0.7) f=0.7;
-        const d=Math.sqrt(d2), ux=dx/d, uy=dy/d;
-        a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
-      }
-    }
-    // springs along edges
-    for(const [i,j] of edges){
-      const a=nodes[i], b=nodes[j];
-      const rest = (a.hub&&b.hub)?150:66;
-      let dx=b.x-a.x, dy=b.y-a.y, d=Math.hypot(dx,dy)||1;
-      const f=(d-rest)*0.012, ux=dx/d, uy=dy/d;
-      a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
-    }
-    // gentle centering + slow breathing drift of the center
-    const gx = cx + Math.cos(t*0.13)*W*0.04, gy = cy + Math.sin(t*0.11)*H*0.04;
-    for(const p of nodes){
-      p.vx += (gx-p.x)*0.0009; p.vy += (gy-p.y)*0.0009;
-      if(mouse.on){
-        const dx=p.x-mouse.x, dy=p.y-mouse.y, d2=dx*dx+dy*dy;
-        if(d2<40000){ const f=(1-d2/40000)*1.4, d=Math.sqrt(d2)||1; p.vx+=dx/d*f; p.vy+=dy/d*f; }
-      }
-      p.vx*=0.86; p.vy*=0.86;
-      const sp=Math.hypot(p.vx,p.vy); if(sp>3){ p.vx=p.vx/sp*3; p.vy=p.vy/sp*3; }
-      p.x+=p.vx; p.y+=p.vy;
-    }
+  function flow(x,y,t){
+    const a = Math.sin(x*0.0015 + t*0.16) + Math.cos(y*0.0013 - t*0.13);
+    const b = Math.cos(x*0.0010 - t*0.11) + Math.sin(y*0.0018 + t*0.15);
+    return Math.atan2(b,a);
   }
 
-  function render(t){
-    ctx.globalCompositeOperation='source-over';
-    ctx.fillStyle='rgba(4,4,9,0.30)';
+  function step(ms){
+    const t = ms*0.001;
+    // soft trail -> motion smear, keeps glow from whiting out
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(6,6,14,0.20)';
     ctx.fillRect(0,0,W,H);
-    ctx.globalCompositeOperation='lighter';
 
-    // edges
-    for(const [i,j] of edges){
-      const a=nodes[i], b=nodes[j];
-      const hot = (a.hue==='mag'||b.hue==='mag');
-      const col = hot?HUE.mag:HUE.cyan;
-      const mx=(a.x+b.x)/2+(a.y-b.y)*0.08, my=(a.y+b.y)/2+(b.x-a.x)*0.08;
-      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo(mx,my,b.x,b.y);
-      ctx.strokeStyle=`rgba(${col[0]},${col[1]},${col[2]},${hot?0.16:0.13})`;
-      ctx.lineWidth=0.8; ctx.stroke();
+    // advance
+    for(const p of cells){
+      const ang = flow(p.x, p.y, t + p.seed*0.0004);
+      p.vx += Math.cos(ang)*0.016; p.vy += Math.sin(ang)*0.016;
+      if(mouse.on){
+        const dx = mouse.x-p.x, dy = mouse.y-p.y, d2 = dx*dx+dy*dy;
+        if(d2 < 34000){ const f = (1 - d2/34000)*0.05; p.vx += dx*f*0.02; p.vy += dy*f*0.02; }
+      }
+      p.vx *= 0.95; p.vy *= 0.95; p.x += p.vx; p.y += p.vy;
+      if(p.x < -60) p.x = W+60; if(p.x > W+60) p.x = -60;
+      if(p.y < -60) p.y = H+60; if(p.y > H+60) p.y = -60;
     }
-    // node glows + cores
-    for(const p of nodes){
-      const col=HUE[p.hue];
-      const pul = (p.hue==='mag') ? (0.6+0.4*Math.sin(t*1.4+p.ph)) : (0.8+0.2*Math.sin(t*p.sp+p.ph));
-      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.glowR);
-      g.addColorStop(0,`rgba(${col[0]},${col[1]},${col[2]},${(p.hub?0.32:0.16)*pul})`);
-      g.addColorStop(0.5,`rgba(${col[0]},${col[1]},${col[2]},${0.05*pul})`);
-      g.addColorStop(1,`rgba(${col[0]},${col[1]},${col[2]},0)`);
-      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.glowR,0,6.283); ctx.fill();
-      ctx.fillStyle=`rgba(${Math.min(255,col[0]+120)},${Math.min(255,col[1]+90)},${Math.min(255,col[2]+90)},${0.85*pul})`;
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill();
+
+    ctx.globalCompositeOperation = 'lighter';
+
+    // tendrils (curved, faint)
+    for(let i=0;i<cells.length;i++){
+      const a = cells[i];
+      for(let j=i+1;j<cells.length;j++){
+        const b = cells[j];
+        const dx = a.x-b.x, dy = a.y-b.y, d2 = dx*dx+dy*dy;
+        if(d2 < LINK2){
+          const al = (1 - d2/LINK2);
+          const mx = (a.x+b.x)/2 + (a.y-b.y)*0.12, my = (a.y+b.y)/2 + (b.x-a.x)*0.12;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo(mx,my,b.x,b.y);
+          ctx.strokeStyle = `rgba(0,229,255,${al*0.16})`; ctx.lineWidth = 0.8; ctx.stroke();
+        }
+      }
     }
-    // faint hub labels (connectome)
-    ctx.globalCompositeOperation='source-over';
-    ctx.font='9px "JetBrains Mono", monospace';
-    ctx.textBaseline='middle';
-    for(const p of nodes){
-      if(!p.label) continue;
-      ctx.fillStyle='rgba(228,231,255,0.18)';
-      ctx.fillText(p.label, p.x + p.r + 6, p.y);
+
+    // cyan masses
+    for(const p of cells){
+      if(p.agent) continue;
+      const pul = reduce ? 1 : (0.82 + 0.18*Math.sin(t*p.sp + p.ph));
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.glowR);
+      g.addColorStop(0, `rgba(0,229,255,${0.085*pul})`);
+      g.addColorStop(0.45, `rgba(76,201,240,${0.035*pul})`);
+      g.addColorStop(1, 'rgba(76,201,240,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x,p.y,p.glowR,0,6.283); ctx.fill();
     }
+
+    // magenta agents (brighter, pulsing) + tiny core
+    for(const p of cells){
+      if(!p.agent) continue;
+      const pul = reduce ? 1 : (0.6 + 0.4*Math.sin(t*1.4 + p.ph));
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.glowR);
+      g.addColorStop(0, `rgba(255,46,146,${0.34*pul})`);
+      g.addColorStop(0.5, `rgba(255,46,146,${0.10*pul})`);
+      g.addColorStop(1, 'rgba(255,46,146,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x,p.y,p.glowR,0,6.283); ctx.fill();
+      ctx.fillStyle = `rgba(255,210,235,${0.7*pul})`; ctx.beginPath(); ctx.arc(p.x,p.y,1.4,0,6.283); ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+    if(!reduce) requestAnimationFrame(step);
   }
 
-  let raf;
-  function frame(ms){
-    const t=ms*0.001;
-    settleStep(t);
-    render(t);
-    raf=requestAnimationFrame(frame);
-  }
-
-  addEventListener('resize', () => {
-    build();
-    if(reduce){ for(let s=0;s<160;s++) settleStep(0); ctx.fillStyle='#040409'; ctx.fillRect(0,0,W,H); render(0); }
-  }, {passive:true});
-  addEventListener('pointermove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; mouse.on=true; }, {passive:true});
-  addEventListener('pointerleave', ()=> mouse.on=false);
+  addEventListener('resize', () => { build(); if(reduce){ ctx.fillStyle='#06060E'; ctx.fillRect(0,0,W,H); step(0);} }, {passive:true});
+  addEventListener('pointermove', e => { mouse.x=e.clientX; mouse.y=e.clientY; mouse.on=true; }, {passive:true});
+  addEventListener('pointerleave', () => mouse.on=false);
 
   build();
-  if(reduce){ for(let s=0;s<160;s++) settleStep(0); ctx.fillStyle='#040409'; ctx.fillRect(0,0,W,H); render(0); }
-  else raf=requestAnimationFrame(frame);
+  if(reduce){ ctx.fillStyle='#06060E'; ctx.fillRect(0,0,W,H); step(0); }
+  else requestAnimationFrame(step);
 })();
 </script>
 </body>
