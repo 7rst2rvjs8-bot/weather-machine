@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Weather Machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THE WEATHER MACHINE — force-directed living network
+   A connectome of the system itself. Cyber-bioluminescent.
+   Hand-edit state in the STATE block at foot of <script>.
+   ============================================================ */
+
+:root{
+  --void:#040409;
+  --void-2:#08080F;
+  --panel:rgba(12,13,24,0.50);
+  --line:rgba(120,160,220,0.12);
+  --line-hot:rgba(0,229,255,0.22);
+
+  --cyan:#00E5FF;       /* structure / brand / links */
+  --cyan-soft:#4CC9F0;
+  --green:#33F0A3;      /* certified / done / healthy */
+  --magenta:#FF2E92;    /* active signal / ahead / the fill */
+  --purple:#9B6BE8;     /* open / undecided / depth */
+
+  --text:#E4E7FF;
+  --muted:#9AA0C8;
+  --faint:#5C628C;
+
+  --maxw:1080px;
+  --gutter:clamp(20px,5vw,72px);
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--body);color:var(--text);line-height:1.55;background:var(--void);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+#organism{position:fixed;inset:0;z-index:0;display:block;pointer-events:none}
+.scrim{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(135% 105% at 50% 32%, transparent 46%, rgba(4,4,9,0.52) 100%),
+    linear-gradient(180deg, rgba(4,4,9,0.5) 0%, transparent 20%, transparent 80%, rgba(4,4,9,0.42) 100%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{position:relative;z-index:3}
+.col{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:15px var(--gutter);background:linear-gradient(180deg,rgba(4,4,9,0.72),transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+nav.stuck{border-bottom-color:var(--line);background:rgba(4,4,9,0.85)}
+.mark{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.16em;color:var(--text);display:flex;align-items:center;gap:10px}
+.mark .node{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan),0 0 4px #fff}
+.navlinks{display:flex;gap:22px}
+.navlinks a{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,text-shadow .2s}
+.navlinks a:hover,.navlinks a:focus-visible{color:var(--cyan);text-shadow:0 0 12px rgba(0,229,255,.5)}
+@media(max-width:780px){.navlinks{display:none}}
+
+section{padding-block:clamp(64px,10vh,124px);position:relative}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.eyebrow.hot{color:var(--magenta)}.eyebrow.hot::before{background:var(--magenta);box-shadow:0 0 8px var(--magenta)}
+h2{font-family:var(--sans);font-weight:600;font-size:clamp(26px,3.7vw,42px);line-height:1.08;letter-spacing:-.015em;max-width:19ch}
+.lede{color:var(--muted);font-size:clamp(15px,1.5vw,17px);max-width:62ch;margin-top:18px}
+.lede strong{color:var(--text);font-weight:500}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:84px}
+.hero .tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(40px,9vw,108px);line-height:.95;letter-spacing:-.03em;text-shadow:0 0 50px rgba(0,229,255,.18)}
+.hero h1 span{display:block}
+.hero h1 .glow{color:transparent;background:linear-gradient(96deg,var(--cyan),#8FE9FF 38%,var(--magenta));-webkit-background-clip:text;background-clip:text;text-shadow:none}
+.hero .thesis{font-size:clamp(16px,1.8vw,20px);color:var(--muted);max-width:52ch;margin-top:30px;line-height:1.6}
+.hero .thesis b{color:var(--text);font-weight:500}
+
+.glass{background:var(--panel);backdrop-filter:blur(13px);border:1px solid var(--line);border-radius:16px}
+.telem{margin-top:46px;display:flex;flex-wrap:wrap;overflow:hidden;max-width:730px}
+.telem .cell{flex:1 1 0;min-width:152px;padding:17px 20px;border-right:1px solid var(--line)}
+.telem .cell:last-child{border-right:none}
+.telem .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.telem .v{font-family:var(--mono);font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.d-cyan{color:var(--cyan)}.d-cyan .dot{background:var(--cyan);box-shadow:0 0 9px var(--cyan)}
+.d-green{color:var(--green)}.d-green .dot{background:var(--green);box-shadow:0 0 9px var(--green)}
+.d-mag{color:var(--magenta)}.d-mag .dot{background:var(--magenta);box-shadow:0 0 9px var(--magenta)}
+.d-pur{color:var(--purple)}.d-pur .dot{background:transparent;border:1px solid var(--purple);box-shadow:0 0 7px rgba(155,107,232,.5)}
+@media(max-width:560px){.telem .cell{flex-basis:50%;border-right:none;border-bottom:1px solid var(--line)}}
+
+.rule{margin-top:42px;padding:28px 30px;max-width:62ch;border-left:2px solid var(--cyan);box-shadow:-14px 0 40px -20px rgba(0,229,255,.4)}
+.rule p{font-family:var(--sans);font-size:clamp(18px,2vw,23px);line-height:1.38;color:var(--text);font-weight:500}
+.rule .src{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:16px}
+
+.loop{margin-top:44px}
+.loop-track{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:880px){.loop-track{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.loop-track{grid-template-columns:1fr}}
+.lstep{padding:22px}
+.lstep .ln{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--cyan);margin-bottom:13px}
+.lstep.fuel .ln{color:var(--magenta)}
+.lstep h4{font-family:var(--sans);font-weight:600;font-size:14.5px;margin-bottom:7px}
+.lstep p{color:var(--muted);font-size:12.5px;line-height:1.55}
+.loop-foot{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--muted);margin-top:22px;display:flex;align-items:baseline;gap:11px}
+.loop-foot .cyc{color:var(--magenta)}
+.loop-foot b{color:var(--text);font-weight:500}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:42px}
+@media(max-width:720px){.cards{grid-template-columns:1fr}}
+.card{padding:26px}
+.card .ct{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.card.cert .ct{color:var(--green)} .card.cert{border-color:rgba(51,240,163,.22)}
+.card.hot .ct{color:var(--magenta)} .card.hot{border-color:rgba(255,46,146,.22)}
+.card h3{font-family:var(--sans);font-weight:600;font-size:19px;margin-bottom:10px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:13.5px}
+.card p b{color:var(--text);font-weight:500}
+
+.stack{margin-top:42px;display:grid;gap:12px}
+.row{display:grid;grid-template-columns:185px 1fr;gap:22px;padding:20px 24px;align-items:baseline}
+@media(max-width:620px){.row{grid-template-columns:1fr;gap:7px}}
+.row .term{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--cyan)}
+.row .def{color:var(--muted);font-size:13.5px}
+.row .def b{color:var(--text);font-weight:500}
+.row .q{font-family:var(--sans);font-weight:600;font-size:14.5px;color:var(--text)}
+.row .v{color:var(--muted);font-size:13.5px}
+.row .v b{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.04em}
+.v .vm{color:var(--magenta)} .v .vc{color:var(--cyan)}
+.fnote{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px;letter-spacing:.02em;line-height:1.6}
+
+.statepanel{margin-top:42px;overflow:hidden}
+.statepanel .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:16px 24px;border-bottom:1px solid var(--line)}
+.statepanel .head .t{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--text)}
+.statepanel .head .ts{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.srow{display:grid;grid-template-columns:185px 1fr;gap:20px;padding:19px 24px;border-bottom:1px solid var(--line);align-items:baseline}
+.srow:last-child{border-bottom:none}
+@media(max-width:620px){.srow{grid-template-columns:1fr;gap:6px}}
+.srow .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.srow .body{font-size:13.5px;color:var(--muted)}
+.srow .body .status{font-family:var(--mono);font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:9px;margin-right:9px}
+.srow .body .note{display:block;margin-top:5px;font-size:13px}
+.srow .body .note b{color:var(--text);font-weight:500}
+.pulse{animation:pulse 1.9s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 9px var(--magenta)}50%{box-shadow:0 0 18px var(--magenta),0 0 4px #fff}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+.road{margin-top:44px;display:grid;gap:10px}
+.stage{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:18px 24px;align-items:start}
+@media(max-width:620px){.stage{grid-template-columns:40px 1fr;gap:13px}}
+.stage .sn{font-family:var(--sans);font-size:30px;font-weight:700;color:var(--faint);line-height:1}
+.stage h4{font-family:var(--sans);font-weight:600;font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.stage p{color:var(--muted);font-size:13px;line-height:1.5}
+.tag2{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid currentColor;font-weight:500}
+.t-done{color:var(--green)} .t-now{color:var(--magenta)} .t-future{color:var(--muted)} .t-dest{color:var(--purple)}
+.stage.now{border-color:rgba(255,46,146,.3);box-shadow:0 0 40px -22px var(--magenta)} .stage.now .sn{color:var(--magenta)}
+.stage.dest .sn{color:var(--purple)}
+
+footer{padding-block:58px 88px;border-top:1px solid var(--line);margin-top:36px}
+.red{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:620px){.red{grid-template-columns:1fr;gap:22px}}
+.red h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:13px}
+.red .shows h4{color:var(--green)} .red .hides h4{color:var(--magenta)}
+.red ul{list-style:none}
+.red li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;margin-bottom:7px}
+.red li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--faint)}
+.foot-mark{margin-top:40px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.06em;line-height:1.7}
+</style>
+</head>
+<body>
+<canvas id="organism" aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav id="nav">
+  <div class="mark"><span class="node"></span> THE WEATHER MACHINE</div>
+  <div class="navlinks">
+    <a href="#idea">Idea</a>
+    <a href="#loop">Loop</a>
+    <a href="#machine">Machine</a>
+    <a href="#measured">Measured</a>
+    <a href="#state">State</a>
+    <a href="#roadmap">Trajectory</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero col">
+    <div class="tag">MULTI-STRATEGY OPTIONS SYSTEM · GATE 4/4 · PRE-FIRST-FILL</div>
+    <h1><span>THE WEATHER</span><span class="glow">MACHINE</span></h1>
+    <p class="thesis">A trading system that learns the way forecasting learned to be accurate — by recording its own misses and adding <b>one correction term at a time</b>, each earned forward on market days it has never seen.</p>
+
+    <div class="telem glass">
+      <div class="cell"><div class="k">Gate</div><div class="v d-green"><span class="dot"></span>4/4 CERTIFIED</div></div>
+      <div class="cell"><div class="k">Edge</div><div class="v d-mag"><span class="dot"></span>PLAUSIBLE · UNCONFIRMED</div></div>
+      <div class="cell"><div class="k">First fill</div><div class="v d-mag"><span class="dot"></span>PENDING · 06-18</div></div>
+    </div>
+  </header>
+
+  <section id="idea" class="col">
+    <div class="eyebrow rv">01 &nbsp;/&nbsp; The idea</div>
+    <h2 class="rv">Forecasting got accurate by being wrong on the record.</h2>
+    <p class="lede rv">Early models were crude. What made them better was discipline: each one logged exactly where it missed, then added a single correction term to catch that miss — and checked whether the term held on weather that hadn't happened yet. This system is built the same way. The goal isn't one clever model; it's a <strong>book of independent strategies</strong>, each running its own error-correction loop, with a meta-layer that moves capital toward what survives and retires what doesn't.</p>
+    <div class="rule glass rv">
+      <p>A correction term earns its place only by catching a real, named miss in data the system has never seen. Build all the plumbing you want — make no decision against old data.</p>
+      <div class="src">The governing rule · what separates a weather machine from a curve-fit</div>
+    </div>
+  </section>
+
+  <section id="loop" class="col">
+    <div class="eyebrow rv">02 &nbsp;/&nbsp; The loop · one error-correction cycle</div>
+    <h2 class="rv">Every strategy is the same five-step loop, turned over and over.</h2>
+    <div class="loop rv">
+      <div class="loop-track">
+        <div class="lstep glass"><div class="ln">01 · TRADE</div><h4>Take the position</h4><p>Live, or shadowed — a signal acted on, or logged as one that would have been.</p></div>
+        <div class="lstep glass fuel"><div class="ln">02 · LOG THE MISS</div><h4>Record where it was wrong</h4><p>The miss is the fuel. Nothing improves without an honest record of the failure.</p></div>
+        <div class="lstep glass"><div class="ln">03 · PROPOSE THE TERM</div><h4>One correction</h4><p>The single term that would have caught that named miss — a fresh hypothesis, not a tweak.</p></div>
+        <div class="lstep glass"><div class="ln">04 · FORWARD-TEST</div><h4>On unseen days</h4><p>Shadow it forward against data it has never touched. Never rescued by re-reading the past.</p></div>
+        <div class="lstep glass"><div class="ln">05 · PROMOTE / KILL</div><h4>Earned, or retired</h4><p>Cheap to kill, hard to promote. A term survives only provisionally; a failure kills it definitively.</p></div>
+      </div>
+      <div class="loop-foot"><span class="cyc">[↻]</span><span><b>Repeat.</b> The loop cannot turn faster than real market days accrue — the binding constraint is the calendar, not effort.</span></div>
+    </div>
+  </section>
+
+  <section id="machine" class="col">
+    <div class="eyebrow rv">03 &nbsp;/&nbsp; The machine</div>
+    <h2 class="rv">An instrument first. The edge is a separate question.</h2>
+    <p class="lede rv">Most of the work so far has gone into proving the <strong>harness</strong> — the execution, logging, and test scaffolding — is trustworthy, kept strictly apart from whether the <strong>edge</strong> exists. A clean instrument can still measure an edge that isn't there. Conflating the two is the failure the project is built to avoid.</p>
+    <div class="cards rv">
+      <div class="card glass cert"><div class="ct">[ CERTIFIED ]</div><h3>The harness</h3><p>Are the measurements real — clean fills, honest logs, no leakage between what's modeled and what's recorded? This is what the gate certifies.</p></div>
+      <div class="card glass hot"><div class="ct">[ UNCONFIRMED ]</div><h3>The edge</h3><p>Does any strategy actually make money? Stated as open. A trustworthy instrument is the precondition for asking — never the answer.</p></div>
+    </div>
+    <div class="stack rv">
+      <div class="row glass"><div class="term">META-LAYER</div><div class="def">Allocates capital across strategies and <b>prices in selection bias</b>. The destination, not today's reality.</div></div>
+      <div class="row glass"><div class="term">STRATEGY #1</div><div class="def">The champion — a momentum/breakout approach on short-dated options. Works in backtest; <b>has never traded live</b>. The crude first model.</div></div>
+      <div class="row glass"><div class="term">SHADOW STREAMS</div><div class="def">Run live during market hours, logging every signal that <b>would</b> have fired — accumulating evidence before a dollar is risked.</div></div>
+      <div class="row glass"><div class="term">UNIVERSE</div><div class="def"><b>9 liquid names</b> — broad-market ETFs plus a few high-volume single names. Specific tickers and signal mechanics are deliberately not published.</div></div>
+    </div>
+  </section>
+
+  <section id="measured" class="col">
+    <div class="eyebrow rv">04 &nbsp;/&nbsp; What's been measured</div>
+    <h2 class="rv">Three foundational assumptions, tested. None flattered the plan.</h2>
+    <p class="lede rv">Before building further, three load-bearing assumptions were checked against existing data. They came back as findings — and each reshaped the roadmap rather than confirming it.</p>
+    <div class="stack rv">
+      <div class="row glass"><div class="q">Does the champion have a real edge?</div><div class="v"><b class="vm">PLAUSIBLE — NOT CONFIRMED.</b> Survives selection-deflation to roughly $4–5 per trade, with three larger doubts still open.</div></div>
+      <div class="row glass"><div class="q">Is the fill model roughly right?</div><div class="v"><b class="vm">LATENCY IS A THREAT.</b> Entry cost is on the order of the per-trade edge — lethal at low premium, which points to a premium floor.</div></div>
+      <div class="row glass"><div class="q">Are five live streams five strategies?</div><div class="v"><b class="vc">NO — ABOUT 2.3 REAL BETS.</b> Variants of one signal add almost no independence; genuine diversity needs genuinely different signals.</div></div>
+    </div>
+    <p class="fnote rv">// the calendar finding: proving a single correction term takes hundreds of forward signals — months — not fifty. So the ladder graduates early and kills early, rather than waiting a fixed term.</p>
+  </section>
+
+  <section id="state" class="col">
+    <div class="eyebrow hot rv">05 &nbsp;/&nbsp; Where it stands</div>
+    <h2 class="rv">The instrument is ready. The first heartbeat is next.</h2>
+    <div class="statepanel glass rv">
+      <div class="head"><div class="t">// CURRENT STATE</div><div class="ts" id="updated">UPDATED — set in STATE</div></div>
+      <div class="srow">
+        <div class="label">Gate</div>
+        <div class="body"><span class="status d-green"><span class="dot"></span>4/4 CERTIFIED</span>
+          <span class="note">Consecutive clean days against pre-committed criteria. Certifies the harness — explicitly not the edge.</span></div>
+      </div>
+      <div class="srow">
+        <div class="label">First fill</div>
+        <div class="body"><span class="status d-mag"><span class="dot pulse"></span>PENDING · 06-18</span>
+          <span class="note">One contract, attended, manual exit. A single execution datapoint — <b>does the real fill match the model?</b> Not a verdict. It is the single most informative event in the project, and the thing everything else exists to serve.</span></div>
+      </div>
+      <div class="srow">
+        <div class="label">Open question</div>
+        <div class="body"><span class="status d-pur"><span class="dot"></span>UNDECIDED</span>
+          <span class="note">Post-fill, three directions stay open: pivot toward slower volatility-structural strategies, scale the current approach at larger capital, or step back and re-examine whether any edge clears the bar. Deferred to a rested decision after the evidence arrives.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="col">
+    <div class="eyebrow hot rv">06 &nbsp;/&nbsp; The trajectory · in unlock order</div>
+    <h2 class="rv">Sophistication comes from the loop turning, not from any single build.</h2>
+    <p class="lede rv">Each turn adds one validated dimension. Most of what matters is still ahead — gated forward, never rushed.</p>
+    <div class="road rv">
+      <div class="stage glass"><div class="sn">0</div><div><h4>Finish the gate <span class="tag2 t-done">Done</span></h4><p>Clean unattended days to 4/4. Certifies the harness, not the edge.</p></div></div>
+      <div class="stage glass"><div class="sn">1</div><div><h4>Foundation probe batch <span class="tag2 t-done">Done</span></h4><p>The reads that turned three assumptions into findings — each output a pre-wired decision.</p></div></div>
+      <div class="stage glass now"><div class="sn">2</div><div><h4>First real fill · 06-18 <span class="tag2 t-now">Now</span></h4><p>Tranche-zero. Tests the one thing no backtest can — do real fills match the model? The engine's first heartbeat.</p></div></div>
+      <div class="stage glass"><div class="sn">3</div><div><h4>Build the fuel system <span class="tag2 t-now">Before fill</span></h4><p>Miss-logger, config registry, data-integrity guard. Must exist before the fill, or that scarce datapoint is lost.</p></div></div>
+      <div class="stage glass"><div class="sn">4</div><div><h4>The honesty tooling <span class="tag2 t-future">Queued</span></h4><p>Graduate-early / kill-early ladder, walk-forward, Deflated Sharpe, Monte Carlo. The system's defense against fooling itself.</p></div></div>
+      <div class="stage glass"><div class="sn">5</div><div><h4>First correction terms compete <span class="tag2 t-future">Post-gate</span></h4><p>Candidate terms run as parallel shadow arms against a control. The first real turn of the loop — forward evidence judges, not argument.</p></div></div>
+      <div class="stage glass"><div class="sn">6</div><div><h4>Decorrelated universe expansion <span class="tag2 t-future">Forward-gated</span></h4><p>A wider net, auto-screened for independence and liquidity. New names enter as data-only shadow arms — never skipping to live.</p></div></div>
+      <div class="stage glass dest"><div class="sn">7</div><div><h4>Multi-strategy meta-layer <span class="tag2 t-dest">Destination</span></h4><p>Several decorrelated strategies, each its own loop, capital allocated across them with selection bias priced in. Months to years out. The north star.</p></div></div>
+      <div class="stage glass"><div class="sn">∞</div><div><h4>Sizing graduation <span class="tag2 t-future">Always on</span></h4><p>Capital scales rung by rung — 1 → 2 → 5 → 10 — only on validated fills. How money follows what earns it.</p></div></div>
+    </div>
+  </section>
+
+  <footer class="col">
+    <div class="red">
+      <div class="shows">
+        <h4>[ SHOWN — ON PURPOSE ]</h4>
+        <ul>
+          <li>The method and the governing rule</li>
+          <li>The foundational findings, including the unflattering ones</li>
+          <li>Coarse gate and fill state</li>
+          <li>The universe by size and character</li>
+          <li>The full trajectory</li>
+        </ul>
+      </div>
+      <div class="hides">
+        <h4>[ WITHHELD — ON PURPOSE ]</h4>
+        <ul>
+          <li>Credentials, broker, and account detail</li>
+          <li>Live open positions</li>
+          <li>The specific tickers</li>
+          <li>Signal mechanics — the edge itself</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-mark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   STATE — edit, save, reopen. Rung 1 (hand-edit).
+   ============================================================ */
+const STATE = {
+  name:"THE WEATHER MACHINE", updated:"2026-06-17",
+  gate:"4/4 CERTIFIED", edge:"PLAUSIBLE · UNCONFIRMED",
+  firstFill:"PENDING · 06-18", universeCount:9
+};
+document.getElementById('updated').textContent = "UPDATED " + STATE.updated.replace(/-/g,'·');
+
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 34), {passive:true});
+
+(() => {
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:0.12});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+   THE ORGANISM — a force-directed graph of the system itself.
+   Nodes repel; linked nodes attract; clusters, hubs and branches
+   emerge like a connectome. Hubs carry faint labels. The cursor
+   stirs the field. Reduced-motion -> settle silently, draw once.
+   ============================================================ */
+(() => {
+  const c = document.getElementById('organism');
+  const ctx = c.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HUE = { cyan:[0,229,255], green:[51,240,163], mag:[255,46,146] };
+  const HUB_LABELS = ['META','STRATEGY 1','SHADOW','MISS','TERM','FORWARD','GATE','FILL','PROMOTE','KILL'];
+  let W, H, DPR, nodes = [], edges = [], cx, cy, mouse = {x:-1e4,y:-1e4,on:false};
+
+  function build(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight; cx = W/2; cy = H/2;
+    c.width = W*DPR; c.height = H*DPR; c.style.width = W+'px'; c.style.height = H+'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+
+    const n = Math.round(Math.min(96, Math.max(48, (W*H)/16000)));
+    const HUBS = Math.min(8, Math.max(5, Math.round(n/12)));
+    nodes = []; edges = [];
+    const R = Math.min(W,H)*0.36;
+    for(let i=0;i<n;i++){
+      const ang = Math.random()*6.283, rad = Math.sqrt(Math.random())*R;
+      nodes.push({
+        x:cx+Math.cos(ang)*rad, y:cy+Math.sin(ang)*rad, vx:0, vy:0,
+        deg:0, hub:i<HUBS, cluster:0,
+        hue: 'cyan', ph:Math.random()*6.28, sp:0.5+Math.random()*1.0,
+        label: i<HUBS ? HUB_LABELS[i % HUB_LABELS.length] : null
+      });
+    }
+    const addEdge=(a,b)=>{ if(a===b) return; edges.push([a,b]); nodes[a].deg++; nodes[b].deg++; };
+    const clusters = Array.from({length:HUBS},()=>[]);
+    for(let i=HUBS;i<n;i++){ const h=i%HUBS; nodes[i].cluster=h; addEdge(i,h); clusters[h].push(i); }
+    // intra-cluster cross-links
+    for(let h=0;h<HUBS;h++){
+      const cl = clusters[h];
+      for(let k=0;k<Math.floor(cl.length*0.4);k++){
+        const a = cl[(Math.random()*cl.length)|0], b = cl[(Math.random()*cl.length)|0];
+        addEdge(a,b);
+      }
+    }
+    // inter-hub ring + a couple chords
+    for(let h=0;h<HUBS;h++) addEdge(h,(h+1)%HUBS);
+    addEdge(0, (HUBS/2)|0); addEdge(1, HUBS-1);
+
+    // hues from degree/role: hubs vary; a fraction of leaves are active (magenta) or healthy (green)
+    nodes.forEach((p,i)=>{
+      if(p.hub){ p.hue = (i%3===0)?'green' : (i%3===1)?'mag' : 'cyan'; }
+      else { const r=Math.random(); p.hue = r<0.16?'green' : r<0.26?'mag' : 'cyan'; }
+      p.r = (p.hub ? 3.0 : 1.4) + Math.sqrt(p.deg)*0.9;
+      p.glowR = (p.hub ? 34 : 16) + p.deg*1.6;
+    });
+  }
+
+  function settleStep(t){
+    // repulsion (all pairs)
+    for(let i=0;i<nodes.length;i++){
+      const a=nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j];
+        let dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy;
+        if(d2<1) d2=1;
+        let f = 1500/d2; if(f>0.7) f=0.7;
+        const d=Math.sqrt(d2), ux=dx/d, uy=dy/d;
+        a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
+      }
+    }
+    // springs along edges
+    for(const [i,j] of edges){
+      const a=nodes[i], b=nodes[j];
+      const rest = (a.hub&&b.hub)?150:66;
+      let dx=b.x-a.x, dy=b.y-a.y, d=Math.hypot(dx,dy)||1;
+      const f=(d-rest)*0.012, ux=dx/d, uy=dy/d;
+      a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
+    }
+    // gentle centering + slow breathing drift of the center
+    const gx = cx + Math.cos(t*0.13)*W*0.04, gy = cy + Math.sin(t*0.11)*H*0.04;
+    for(const p of nodes){
+      p.vx += (gx-p.x)*0.0009; p.vy += (gy-p.y)*0.0009;
+      if(mouse.on){
+        const dx=p.x-mouse.x, dy=p.y-mouse.y, d2=dx*dx+dy*dy;
+        if(d2<40000){ const f=(1-d2/40000)*1.4, d=Math.sqrt(d2)||1; p.vx+=dx/d*f; p.vy+=dy/d*f; }
+      }
+      p.vx*=0.86; p.vy*=0.86;
+      const sp=Math.hypot(p.vx,p.vy); if(sp>3){ p.vx=p.vx/sp*3; p.vy=p.vy/sp*3; }
+      p.x+=p.vx; p.y+=p.vy;
+    }
+  }
+
+  function render(t){
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle='rgba(4,4,9,0.30)';
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+
+    // edges
+    for(const [i,j] of edges){
+      const a=nodes[i], b=nodes[j];
+      const hot = (a.hue==='mag'||b.hue==='mag');
+      const col = hot?HUE.mag:HUE.cyan;
+      const mx=(a.x+b.x)/2+(a.y-b.y)*0.08, my=(a.y+b.y)/2+(b.x-a.x)*0.08;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo(mx,my,b.x,b.y);
+      ctx.strokeStyle=`rgba(${col[0]},${col[1]},${col[2]},${hot?0.16:0.13})`;
+      ctx.lineWidth=0.8; ctx.stroke();
+    }
+    // node glows + cores
+    for(const p of nodes){
+      const col=HUE[p.hue];
+      const pul = (p.hue==='mag') ? (0.6+0.4*Math.sin(t*1.4+p.ph)) : (0.8+0.2*Math.sin(t*p.sp+p.ph));
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.glowR);
+      g.addColorStop(0,`rgba(${col[0]},${col[1]},${col[2]},${(p.hub?0.32:0.16)*pul})`);
+      g.addColorStop(0.5,`rgba(${col[0]},${col[1]},${col[2]},${0.05*pul})`);
+      g.addColorStop(1,`rgba(${col[0]},${col[1]},${col[2]},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.glowR,0,6.283); ctx.fill();
+      ctx.fillStyle=`rgba(${Math.min(255,col[0]+120)},${Math.min(255,col[1]+90)},${Math.min(255,col[2]+90)},${0.85*pul})`;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill();
+    }
+    // faint hub labels (connectome)
+    ctx.globalCompositeOperation='source-over';
+    ctx.font='9px "JetBrains Mono", monospace';
+    ctx.textBaseline='middle';
+    for(const p of nodes){
+      if(!p.label) continue;
+      ctx.fillStyle='rgba(228,231,255,0.18)';
+      ctx.fillText(p.label, p.x + p.r + 6, p.y);
+    }
+  }
+
+  let raf;
+  function frame(ms){
+    const t=ms*0.001;
+    settleStep(t);
+    render(t);
+    raf=requestAnimationFrame(frame);
+  }
+
+  addEventListener('resize', () => {
+    build();
+    if(reduce){ for(let s=0;s<160;s++) settleStep(0); ctx.fillStyle='#040409'; ctx.fillRect(0,0,W,H); render(0); }
+  }, {passive:true});
+  addEventListener('pointermove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; mouse.on=true; }, {passive:true});
+  addEventListener('pointerleave', ()=> mouse.on=false);
+
+  build();
+  if(reduce){ for(let s=0;s<160;s++) settleStep(0); ctx.fillStyle='#040409'; ctx.fillRect(0,0,W,H); render(0); }
+  else raf=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
