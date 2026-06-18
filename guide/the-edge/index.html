@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What “an edge” means — The Weather Machine</title>
+<meta name="description" content="In plain language: what 'an edge' is, and why the honest answer for this system is still 'we don't know yet.'">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body class="guide elev-canopy">
+<div class="bg" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<nav class="nav">
+  <a class="brand" href="../../"><span class="seed"></span> <span data-state="name">THE WEATHER MACHINE</span></a>
+  <button class="navtoggle" aria-label="Menu">Menu</button>
+  <div class="navlinks">
+    <a href="../../">Forecast</a><a href="../" aria-current="page">Field Guide</a><a href="../../method/">Method</a><a href="../../machine/">Machine</a><a href="../../measured/">Measured</a><a href="../../trajectory/">Trajectory</a><a href="../../state/">State</a><a href="../../creator/">Creator</a>
+  </div>
+</nav>
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">Field guide · the basics</div>
+    <h1 class="rv">What “an edge” <span class="grow">means.</span></h1>
+    <p class="plain lead rv">“Edge” is a plain question dressed in a fancy word: over many, many trades, does this actually come out <b>ahead</b>, after all the costs? For this system, the honest answer right now is — <b>we don’t know yet.</b></p>
+  </header>
+  <main>
+  <section class="col">
+    <p class="plain rv">Early signs look promising. But here’s the trap that fools almost everyone: if you try enough strategies against past data, one of them will look brilliant purely by <b>luck</b> — the same way someone in a big enough crowd will flip ten heads in a row. So “it looked great on history” is, on its own, nearly worthless.</p>
+    <p class="plain rv">That’s why the system labels its edge <b>plausible, but unconfirmed</b>. <i>Plausible</i> because, even after subtracting a fair estimate of that luck, a small advantage still seems to be there. <i>Unconfirmed</i> because the only proof that really counts is results on days the system has never seen — and those aren’t in yet.</p>
+    <div class="callout rv">
+      <div class="t">The honest rule</div>
+      <p>A test against the past can make almost anything look profitable. The only trustworthy test is forward — on real days the system never got to peek at first.</p>
+    </div>
+    <details class="deeper rv">
+      <summary>Go deeper — the numbers behind “plausible”</summary>
+      <div class="body">
+        <p>After a statistical haircut for picking the best-looking option out of many (“selection-deflation”), the estimated advantage lands around a few dollars per trade — but that figure is an <b>upper bound</b>, not a verdict. It only rules out one specific kind of luck.</p>
+        <p>Three larger doubts stay open: fine-tuning hidden inside each candidate, a subtle “we couldn’t actually have known to pick these names back then” problem, and the fact that every test against the same history spends down a limited budget of honest comparisons. See <a class="gloss" href="../../measured/">What’s Measured</a> for the full accounting.</p>
+      </div>
+    </details>
+    <div class="nextrow rv"><a href="../the-fill/">Next: the first real trade →</a><a href="../../measured/">See what’s been tested →</a><a href="../">All of the Field Guide →</a></div>
+  </section>
+  </main>
+</div>
+<footer class="siteft">
+  <div class="col">
+    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="../../colophon/">Why, and what’s shown →</a></p>
+    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
+  </div>
+</footer>
+<script src="../../state.js"></script>
+<script src="../../site.js"></script>
+</body>
+</html>

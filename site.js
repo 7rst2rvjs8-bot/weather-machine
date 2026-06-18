@@ -64,11 +64,16 @@
         for(const p of cl.puff){ const px=cl.x+p.dx*cl.s,py=cl.y+p.dy*cl.s,pr=p.r*cl.s,gg=ctx.createRadialGradient(px,py,0,px,py,pr);
           gg.addColorStop(0,`rgba(250,252,255,${0.5*fade})`); gg.addColorStop(1,'rgba(250,252,255,0)');
           ctx.fillStyle=gg; ctx.beginPath(); ctx.arc(px,py,pr,0,6.283); ctx.fill(); } }
-      if(!reduce&&vis) raf=requestAnimationFrame(draw);
+      if(!reduce&&!small&&vis) raf=requestAnimationFrame(draw);
     }
-    addEventListener('resize',()=>{ size(); if(reduce) draw(0); },{passive:true});
-    document.addEventListener('visibilitychange',()=>{ vis=!document.hidden; if(vis&&!reduce) raf=requestAnimationFrame(draw); });
-    size(); if(reduce) draw(0); else raf=requestAnimationFrame(draw);
+    // width-only, debounced resize — iOS hides/shows the address bar on scroll,
+    // which fires resize with a changed HEIGHT; rebuilding then = the flicker.
+    let lastW=innerWidth, rt;
+    addEventListener('resize',()=>{ if(innerWidth===lastW) return; clearTimeout(rt);
+      rt=setTimeout(()=>{ lastW=innerWidth; cancelAnimationFrame(raf); size(); draw(0);
+        if(!reduce && !small && vis) raf=requestAnimationFrame(draw); },200); },{passive:true});
+    document.addEventListener('visibilitychange',()=>{ vis=!document.hidden; if(vis&&!reduce&&!small) raf=requestAnimationFrame(draw); });
+    size(); if(reduce||small) draw(0); else raf=requestAnimationFrame(draw);   // mobile: one static frame, no RAF
   })();
 
   /* ============================================================
@@ -126,7 +131,7 @@
       for(let k=0;k<Math.min(BMAX,tips.length);k++) blooms.push({ni:tips[k].i, hue:FLOWERS[pal[k%pal.length]], ph:Math.random()*6.28, r:small?5:6.5});
       built=true;
     }
-    function pos(n,t){ if(reduce||g<1) return [n.x,n.y];
+    function pos(n,t){ if(reduce||small||g<1) return [n.x,n.y];   // mobile: no ambient sway
       return [n.x+Math.sin(t*0.22+n.swayPh)*n.swayAmp*0.9, n.y+Math.cos(t*0.18+n.swayPh)*n.swayAmp*0.5]; }
     function draw(ms){
       const t=ms*0.001;
@@ -151,15 +156,20 @@
         ctx.fillStyle=gg; ctx.beginPath(); ctx.arc(xy[0],xy[1],R*2.4,0,6.283); ctx.fill();
         ctx.fillStyle=`rgba(${Math.min(255,col[0]+70)},${Math.min(255,col[1]+60)},${Math.min(255,col[2]+60)},${0.9*pul})`;
         ctx.beginPath(); ctx.arc(xy[0],xy[1],1.7,0,6.283); ctx.fill(); }
-      if(reduce) return; if(vis) raf=requestAnimationFrame(draw);
+      if(reduce) return; if(small && g>=1) return;   // mobile: freeze once grown — no continuous repaint
+      if(vis) raf=requestAnimationFrame(draw);
     }
     function startGrow(){ if(growStart<0 && !reduce) growStart=performance.now(); }
     if(isHome){
       c.style.opacity=0; c.style.transition='opacity .4s ease';
       addEventListener('scroll', ()=>{ const o=Math.max(0,Math.min(1,(scrollY/innerHeight-0.45)/0.5)); c.style.opacity=o.toFixed(3); if(o>0.04) startGrow(); }, {passive:true});
     } else { c.style.opacity=1; startGrow(); }
-    addEventListener('resize',()=>{ const grown=g>=1; build(); if(grown){ growStart=performance.now()-GROW_MS; g=1; } if(reduce) draw(0); },{passive:true});
-    document.addEventListener('visibilitychange',()=>{ vis=!document.hidden; if(vis&&!reduce) raf=requestAnimationFrame(draw); });
+    let lastWr=innerWidth, rtr;
+    addEventListener('resize',()=>{ if(innerWidth===lastWr) return; clearTimeout(rtr);   // ignore iOS chrome height changes
+      rtr=setTimeout(()=>{ lastWr=innerWidth; const grown=g>=1; cancelAnimationFrame(raf); build();
+        if(grown){ growStart=performance.now()-GROW_MS; g=1; } draw(performance.now());
+        if(!reduce && !(small&&g>=1) && vis) raf=requestAnimationFrame(draw); },200); },{passive:true});
+    document.addEventListener('visibilitychange',()=>{ vis=!document.hidden; if(vis&&!reduce&&!(small&&g>=1)) raf=requestAnimationFrame(draw); });
     build(); if(reduce){ g=1; draw(0); } else raf=requestAnimationFrame(draw);
   })();
 })();

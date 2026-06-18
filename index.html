@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Weather Machine</title>
-<meta name="description" content="A trading system built like a forecast model — learning by recording its own misses, one validated correction term at a time. Honest about what is and isn't yet known.">
+<meta name="description" content="A trading system that tries to improve the way weather forecasting did — by recording its own mistakes and fixing one at a time. Built in the open, honest about what is and isn't yet proven.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,10 +22,10 @@
   <button class="navtoggle" aria-label="Menu">Menu</button>
   <div class="navlinks">
     <a href="./" aria-current="page">Forecast</a>
+    <a href="guide/">Field Guide</a>
     <a href="method/">Method</a>
     <a href="machine/">Machine</a>
     <a href="measured/">Measured</a>
-    <a href="fork/">Fork</a>
     <a href="trajectory/">Trajectory</a>
     <a href="state/">State</a>
     <a href="creator/">Creator</a>
@@ -34,71 +34,128 @@
 
 <div class="wrap">
   <header class="hero col">
-    <div class="tag">MULTI-STRATEGY OPTIONS SYSTEM · GATE 4/4 · PRE-FIRST-FILL</div>
+    <div class="tag">A TRADING SYSTEM, BUILT IN THE OPEN</div>
     <h1><span>THE WEATHER</span><span class="grow">MACHINE</span></h1>
-    <p class="thesis">A trading system that learns the way forecasting learned to be accurate — by recording its own misses and adding <b>one correction term at a time</b>, each earned forward on market days it has never seen.</p>
+    <p class="thesis">A trading system that tries to get better the way <b>weather forecasting</b> did — by carefully recording every time it’s wrong, and fixing <b>one mistake at a time</b>. It’s honest about what it has and hasn’t proven — which, so far, is mostly the former.</p>
     <div class="telem">
-      <div class="cell"><div class="k">Gate</div><div class="v"><span class="dot" style="background:var(--leaf-deep)"></span><span data-state="gate">4/4 CERTIFIED</span></div></div>
-      <div class="cell"><div class="k">Edge</div><div class="v"><span class="dot" style="background:var(--poppy)"></span><span data-state="edge">PLAUSIBLE · UNCONFIRMED</span></div></div>
-      <div class="cell"><div class="k">First fill</div><div class="v"><span class="dot" style="background:var(--poppy)"></span><span data-state="firstFill">PENDING · 06-18</span></div></div>
+      <div class="cell"><a class="k" href="guide/the-gate/" style="text-decoration:none;color:inherit;border-bottom:1px dotted">Safety check &#9432;</a><div class="v"><span class="dot" style="background:var(--leaf-deep)"></span><span data-state="gate">4/4 CERTIFIED</span></div></div>
+      <div class="cell"><a class="k" href="guide/the-edge/" style="text-decoration:none;color:inherit;border-bottom:1px dotted">Does it earn? &#9432;</a><div class="v"><span class="dot" style="background:var(--poppy)"></span><span data-state="edge">PLAUSIBLE · UNCONFIRMED</span></div></div>
+      <div class="cell"><a class="k" href="guide/the-fill/" style="text-decoration:none;color:inherit;border-bottom:1px dotted">First real trade &#9432;</a><div class="v"><span class="dot" style="background:var(--poppy)"></span><span data-state="firstFill">PENDING · 06-18</span></div></div>
     </div>
+    <p class="thesis" style="margin-top:18px;font-size:15px"><a href="guide/start-here/" style="color:var(--leaf-deep);font-weight:600;text-decoration:none;border-bottom:1.5px solid">New to investing? Start here →</a></p>
   </header>
 
-  <section class="scene col">
-    <div class="scene-head">The sky is the map · every element opens a page · or use the nav, always present</div>
-    <div class="map">
-      <a class="spot s-active" href="state/">
-        <div class="ico">⛈</div><div class="lab">The storm cell</div>
-        <div class="means">Tranche-zero — the first real fill. The single most informative event in the project.</div>
-        <div class="go">Current State →</div></a>
-      <a class="spot" href="machine/#streams">
-        <div class="ico">☁</div><div class="lab">The clouds</div>
-        <div class="means">The strategies and the shadow streams — signals logged live before a dollar is risked.</div>
-        <div class="go">The Machine →</div></a>
-      <a class="spot" href="machine/#harness">
-        <div class="ico">☀</div><div class="lab">Clear sun</div>
-        <div class="means">What's certified — the harness the gate proves trustworthy, kept apart from the edge.</div>
-        <div class="go">The Machine →</div></a>
-      <a class="spot" href="measured/">
-        <div class="ico">⛰</div><div class="lab">Down into the soil</div>
-        <div class="means">The foundations — three assumptions tested against data. None flattered the plan.</div>
-        <div class="go">What's Measured →</div></a>
-      <a class="spot" href="trajectory/">
-        <div class="ico">🌄</div><div class="lab">The horizon</div>
-        <div class="means">The trajectory — sophistication earned in unlock order, gated forward, never rushed.</div>
-        <div class="go">The Trajectory →</div></a>
-      <a class="spot" href="creator/">
-        <div class="ico">🧍</div><div class="lab">A figure on the ground</div>
-        <div class="means">Who's building it, and from where — a solo build, stated plainly.</div>
-        <div class="go">The Creator →</div></a>
+  <section class="tree col">
+    <div class="tree-head">The tree is the map · <span style="color:#E98">red “?” apples</span> teach the basics · <span style="color:var(--leaf-deep)">green branches</span> show the build</div>
+    <div class="treewrap">
+      <svg viewBox="0 0 1000 740" role="img" aria-label="An interactive tree linking to each part of the site">
+        <!-- trunk -->
+        <path d="M486,706 C492,580 495,450 497,338 L503,338 C505,450 508,580 514,706 Z" fill="#3A2A1A"/>
+        <!-- limbs -->
+        <path class="limb" d="M500,372 C360,372 270,318 178,262" stroke-width="7"/>
+        <path class="limb" d="M500,344 C430,262 372,206 312,160" stroke-width="6"/>
+        <path class="limb" d="M500,344 C575,262 640,206 700,158" stroke-width="6"/>
+        <path class="limb" d="M500,372 C650,372 745,318 836,266" stroke-width="7"/>
+        <!-- twigs to apples -->
+        <path class="limb" d="M300,300 C285,318 268,330 252,338" stroke-width="3"/>
+        <path class="limb" d="M770,300 C772,322 774,338 776,352" stroke-width="3"/>
+        <path class="limb" d="M640,210 C652,214 660,220 666,228" stroke-width="3"/>
+        <path class="limb" d="M372,232 C368,240 363,248 358,256" stroke-width="3"/>
+        <path class="limb" d="M210,300 C200,330 192,352 186,372" stroke-width="3"/>
+
+        <!-- SUN → current state -->
+        <a class="sun-hit node-hit" href="state/"><title>Current State — where it stands</title>
+          <circle cx="852" cy="104" r="40" fill="#FFE9C2"/><circle cx="852" cy="104" r="40" fill="none" stroke="#E8C98A" stroke-width="2"/>
+          <text class="node-sub" x="852" y="160" text-anchor="middle">Current State</text>
+        </a>
+
+        <!-- NARRATIVE branch nodes -->
+        <a class="node-hit" href="method/"><title>The Method</title>
+          <circle class="node-dot" cx="178" cy="262" r="9"/>
+          <text class="node-label" x="178" y="250" text-anchor="middle">The Method</text>
+          <text class="node-sub" x="178" y="284" text-anchor="middle">how it learns</text>
+        </a>
+        <a class="node-hit" href="trajectory/"><title>The Trajectory</title>
+          <circle class="node-dot" cx="312" cy="160" r="9"/>
+          <text class="node-label" x="312" y="148" text-anchor="middle">The Trajectory</text>
+          <text class="node-sub" x="312" y="182" text-anchor="middle">what’s ahead</text>
+        </a>
+        <a class="node-hit" href="fork/"><title>The Fork</title>
+          <circle class="node-dot" cx="700" cy="158" r="9"/>
+          <text class="node-label" x="700" y="146" text-anchor="middle">The Fork</text>
+          <text class="node-sub" x="700" y="180" text-anchor="middle">the decision</text>
+        </a>
+        <a class="node-hit" href="machine/"><title>The Machine</title>
+          <circle class="node-dot" cx="836" cy="266" r="9"/>
+          <text class="node-label" x="836" y="254" text-anchor="middle">The Machine</text>
+          <text class="node-sub" x="836" y="288" text-anchor="middle">what’s built</text>
+        </a>
+
+        <!-- APPLES → field guide -->
+        <a class="apple-hit" id="gate-apple" href="guide/the-gate/"><title>Field guide: the 4/4 gate</title>
+          <path class="apple-leaf" d="M252,322 q8,-9 16,-3 q-6,8 -16,3"/>
+          <circle class="apple-body" cx="252" cy="338" r="17"/>
+          <text class="apple-q" x="252" y="344" font-size="18">?</text>
+          <text class="apple-cap" x="252" y="368">the gate</text>
+        </a>
+        <a class="apple-hit" href="guide/the-edge/"><title>Field guide: what an edge is</title>
+          <path class="apple-leaf" d="M776,336 q8,-9 16,-3 q-6,8 -16,3"/>
+          <circle class="apple-body" cx="776" cy="352" r="17"/>
+          <text class="apple-q" x="776" y="358" font-size="18">?</text>
+          <text class="apple-cap" x="776" y="382">the edge</text>
+        </a>
+        <a class="apple-hit" href="guide/the-fill/"><title>Field guide: what the fill is</title>
+          <path class="apple-leaf" d="M666,212 q8,-9 16,-3 q-6,8 -16,3"/>
+          <circle class="apple-body" cx="666" cy="228" r="17"/>
+          <text class="apple-q" x="666" y="234" font-size="18">?</text>
+          <text class="apple-cap" x="666" y="258">the fill</text>
+        </a>
+        <a class="apple-hit" href="guide/shadow-streams/"><title>Field guide: shadow streams</title>
+          <path class="apple-leaf" d="M358,240 q8,-9 16,-3 q-6,8 -16,3"/>
+          <circle class="apple-body" cx="358" cy="256" r="17"/>
+          <text class="apple-q" x="358" y="262" font-size="18">?</text>
+          <text class="apple-cap" x="358" y="286">shadow streams</text>
+        </a>
+        <a class="apple-hit" href="guide/the-loop/"><title>Field guide: the correction loop</title>
+          <path class="apple-leaf" d="M186,356 q8,-9 16,-3 q-6,8 -16,3"/>
+          <circle class="apple-body" cx="186" cy="372" r="17"/>
+          <text class="apple-q" x="186" y="378" font-size="18">?</text>
+          <text class="apple-cap" x="186" y="396">the loop</text>
+        </a>
+        <!-- START HERE — the big apple -->
+        <a class="apple-hit" href="guide/start-here/"><title>Start here — for total beginners</title>
+          <path class="apple-leaf" d="M500,418 q11,-12 22,-4 q-8,11 -22,4"/>
+          <circle class="apple-body" cx="500" cy="442" r="26"/>
+          <text class="apple-q" x="500" y="450" font-size="26">?</text>
+          <text class="apple-cap" x="500" y="482" font-size="11">start here · the basics</text>
+        </a>
+
+        <!-- roots → measured -->
+        <a class="roots-hit node-hit" href="measured/"><title>What's Measured — the foundations</title>
+          <text class="node-label" x="500" y="640" text-anchor="middle" font-size="15">↓ The foundations</text>
+          <text class="node-sub" x="500" y="662" text-anchor="middle">what’s been tested</text>
+        </a>
+        <!-- figure → creator -->
+        <a class="fig-hit node-hit" href="creator/"><title>The Creator</title>
+          <circle cx="610" cy="676" r="8" fill="#2A1E12"/>
+          <rect x="604" y="686" width="12" height="20" rx="5" fill="#2A1E12"/>
+          <text class="node-sub" x="610" y="722" text-anchor="middle">the creator</text>
+        </a>
+      </svg>
+    </div>
+    <div class="legend">
+      <span><i class="k kbranch"></i> green branch → a part of the build</span>
+      <span><i class="k kapple"></i> red “?” apple → learn that idea from scratch</span>
     </div>
   </section>
 </div>
 
-<footer class="colophon">
+<footer class="siteft">
   <div class="col">
-    <div class="shows">
-      <h4>[ Shown — on purpose ]</h4>
-      <ul>
-        <li>The method and the governing rule</li>
-        <li>The foundational findings, including the unflattering ones</li>
-        <li>Coarse gate and fill state</li>
-        <li>The universe by size and character</li>
-        <li>The full trajectory</li>
-      </ul>
-    </div>
-    <div class="hides">
-      <h4>[ Withheld — on purpose ]</h4>
-      <ul>
-        <li>Credentials, broker, and account detail</li>
-        <li>Live open positions</li>
-        <li>The specific tickers</li>
-        <li>Signal mechanics — the edge itself</li>
-      </ul>
-    </div>
+    <p class="priv">Some things about a real, live trading system stay private — account and broker details, current positions, the exact tickers traded, and the precise signal logic. Everything you need to understand the method and judge it honestly is here. <a href="colophon/">Why, and what’s shown →</a></p>
+    <p class="footmark">THE WEATHER MACHINE · a solo build · status hand-maintained · no profit or loss is claimed or implied — there is none yet, by design.</p>
   </div>
 </footer>
-<div class="footmark">THE WEATHER MACHINE · solo build · status hand-maintained · no P&amp;L is claimed or implied — there is none yet, by design.</div>
 
 <script src="state.js"></script>
 <script src="site.js"></script>
