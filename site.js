@@ -84,7 +84,7 @@
     function draw(ts){ if(t0===null) t0=ts; const t=(ts-t0)/1000; const p=reduce?1:ease(Math.min(1,t/1.5)); ctx.clearRect(0,0,W,H);
       N.forEach(n=>{ const dr=(settled&&!reduce&&!small)?noise(t*0.5,n.ph)*1.4:0; n.x=n.sx+(n.X-n.sx)*p+dr; n.y=n.sy+(n.Y-n.sy)*p+(settled?Math.cos(t*0.4+n.ph)*1.0:0); });
       const hy=N[idx.harness].ty*H;
-      const dw=ctx.createLinearGradient(0,H*0.5,0,H); dw.addColorStop(0,'rgba(10,90,114,0)'); dw.addColorStop(1,'rgba(7,50,66,0.45)'); ctx.fillStyle=dw; ctx.fillRect(0,H*0.5,W,H*0.5);
+      const dw=ctx.createLinearGradient(0,H*0.45,0,H); dw.addColorStop(0,'rgba(34,150,185,0)'); dw.addColorStop(1,'rgba(30,135,170,0.16)'); ctx.fillStyle=dw; ctx.fillRect(0,H*0.45,W,H*0.55);
       const bgd=ctx.createLinearGradient(0,hy-40,0,hy+34); bgd.addColorStop(0,'rgba(8,200,138,0)'); bgd.addColorStop(0.6,'rgba(8,220,150,0.16)'); bgd.addColorStop(1,'rgba(8,200,138,0)');
       ctx.fillStyle=bgd; ctx.fillRect(0,hy-40,W,74); ctx.strokeStyle='rgba(8,220,150,0.6)'; ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(W*0.10,hy); ctx.lineTo(W*0.90,hy); ctx.stroke();
       ctx.lineWidth=1; SUB.forEach(id=>{ const n=N[idx[id]]; ctx.strokeStyle=`rgba(8,150,120,${0.14*p})`; ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(n.x,hy); ctx.stroke(); });

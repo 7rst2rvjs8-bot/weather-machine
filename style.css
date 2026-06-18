@@ -231,3 +231,35 @@ body.home .panel{position:relative;align-self:stretch;min-height:100svh}
 .tip .st{color:var(--muted)}
 /* the .panel glass rules above are overridden to a bare canvas frame on the home */
 body.home .panel{border:0;background:none!important;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* ============================================================
+   BEAUTY POLISH — luminous throughout, glossier glass, more air
+   ============================================================ */
+body.surface{background:linear-gradient(180deg,#eef9fd 0%,#d8f1f9 46%,#b7e5f0 100%) fixed}
+body.shallow{background:linear-gradient(180deg,#e3f4fb 0%,#b2e2ef 46%,#74c9dd 100%) fixed}
+.atmo{background:
+  radial-gradient(72% 56% at 80% -2%, rgba(255,255,255,0.75), transparent 60%),
+  radial-gradient(58% 42% at 14% 3%, rgba(176,233,247,0.55), transparent 60%)}
+
+/* glossier glass — softer light, deeper lift, brighter top glare */
+.panel{border-radius:16px;border:1px solid rgba(255,255,255,0.66);border-top-color:rgba(255,255,255,0.96);
+  background:rgba(255,255,255,0.5);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 16px 46px -22px rgba(12,78,108,0.30),0 2px 8px -4px rgba(12,78,108,0.10),inset 0 1px 0 rgba(255,255,255,0.92)}
+
+/* more air, finer tracking */
+section{padding-block:clamp(64px,9.5vh,128px)}
+.sub,.lede,.plain{line-height:1.66}
+.phead{padding-bottom:3vh}
+h2{letter-spacing:-.018em;line-height:1.12}
+.phead h1,.word{letter-spacing:-.024em}
+.kicker{letter-spacing:.05em}
+.section-meta{margin-bottom:6px}
+
+/* unhurried hover lift on the touchable surfaces */
+.finding-node,.card,.gcard{transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.finding-node:hover,.card:hover,.gcard:hover{transform:translateY(-3px);
+  box-shadow:0 26px 58px -24px rgba(12,78,108,0.40),0 3px 10px -5px rgba(12,78,108,0.14),inset 0 1px 0 rgba(255,255,255,0.95)}
+
+/* a more luminous verdict + an underline-on-hover for glosses */
+.verdict-callout{font-size:1.18rem;letter-spacing:-.004em;margin-bottom:10px}
+.gloss{transition:color .2s,border-color .2s}
