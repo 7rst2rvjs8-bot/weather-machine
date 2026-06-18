@@ -2,14 +2,24 @@
 # Weather Machine — PUBLIC site repo.
 # Only index.html belongs here. Everything else stays local.
 #
-# These two files were downloaded into this folder but must NOT
-# be published. They are excluded explicitly so that a stray
+# These files were downloaded into this folder but must NOT be
+# published. They are excluded explicitly so that a stray
 # `git add .` cannot sweep them into the public repo:
 #   - CLAUDE_CODE_HANDOFF.md   (internal roadmap / sanitizer plan)
-#   - weather-machine-v4-flowfield.html  (alternate draft, not shipped)
+#   - DESIGN_HANDOFF.md        (internal design-refinement brief)
+#   - weather-machine-v4-flowfield.html  (superseded draft, not shipped)
+#   - weather-machine-v5.html  (design baseline / working source, not shipped)
+# Only the promoted result ever lands in index.html.
 # ============================================================
 CLAUDE_CODE_HANDOFF.md
+DESIGN_HANDOFF.md
 weather-machine-v4-flowfield.html
+weather-machine-v5.html
+
+# Local design working copies — scratch drafts, never published
+weather-machine-*.html
+*.draft.html
+index.work.html
 
 # Future rung-2 sanitizer scratch — never publish source/state pulls
 state.json
