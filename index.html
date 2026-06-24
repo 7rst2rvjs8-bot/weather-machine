@@ -3,44 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE WEATHER MACHINE</title>
-<meta name="description" content="A self-correcting options trading system. Each strategy records where it was wrong and earns the correction forward, out-of-sample, before capital scales behind it.">
+<title>KATABASIS</title>
+<meta name="description" content="Katabasis is a systematic options-trading research system built on one rule: assume every idea is noise until it proves otherwise. The Weather Machine was its first instrument.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  .lander .phead{padding-top:20vh}
+  .lander h1.big{font-weight:400;font-size:clamp(54px,11vw,150px);letter-spacing:-.03em;line-height:.96;color:var(--ink)}
+  .enter{display:block;margin-top:38px;padding:32px 34px;text-decoration:none;color:inherit;border-radius:18px}
+  .enter .lead-in{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:12px}
+  .enter h3{font-weight:400;font-size:clamp(24px,3.2vw,38px);letter-spacing:-.02em;color:var(--ink)}
+  .enter .go{font-family:var(--mono);font-size:13px;color:var(--aqua-sig);margin-top:14px;display:inline-block}
+  .enter:hover{transform:translateY(-3px)} .enter{transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}}
+  .step{padding:24px} .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--aqua-sig);margin-bottom:10px}
+  .step h4{font-weight:500;font-size:16px;margin-bottom:6px} .step p{color:var(--muted);font-size:13.5px}
+</style>
 </head>
-<body class="home surface">
+<body class="surface lander">
 <canvas id="field" aria-hidden="true"></canvas>
 <div class="atmo" aria-hidden="true"></div>
 
 <header class="nav">
-  <a class="brand" href="./"><span class="pip"></span><span data-state="name">THE WEATHER MACHINE</span></a>
+  <a class="brand" href="./"><span class="pip"></span>KATABASIS</a>
   <button class="navtoggle" aria-label="Menu">Menu</button>
   <nav class="routes">
-    <a href="method/">Method</a><a href="machine/">Machine</a><a href="measured/">Findings</a><a href="trajectory/">Trajectory</a><a href="state/">State</a><a href="creator/">Creator</a><a href="guide/">Field Guide</a>
+    <a href="weather-machine/">Weather Machine</a><a href="method/">Method</a><a href="measured/">Findings</a><a href="trajectory/">Trajectory</a><a href="guide/">Field Guide</a>
   </nav>
 </header>
 
-<main class="hero">
-  <div class="read">
-    <p class="kick">A self-correcting options trading system</p>
-    <h1 class="word">THE WEATHER MACHINE</h1>
-    <p class="line">Each strategy records where it was wrong and proposes the single correction that would have caught the miss. Corrections earn their place <b>forward, on out-of-sample data</b>, before capital scales behind them.</p>
-    <div class="entries">
-      <a href="method/">Method →</a>
-      <a href="machine/">The machine →</a>
-      <a class="muted" href="guide/start-here/">New here? Field guide →</a>
+<div class="wrap">
+  <header class="phead col">
+    <div class="kicker rv">A systematic options-trading research system</div>
+    <h1 class="big rv">KATABASIS</h1>
+    <p class="sub rv">Katabasis is built on a single rule: <b>assume every trading idea is noise until it proves otherwise</b> — and almost nothing does. The point of the system is not to find winners. It is to keep itself honest about what it does not yet know.</p>
+  </header>
+
+  <main>
+  <section class="col">
+    <div class="eyebrow rv">What it is</div>
+    <h2 class="rv">A small live instrument, and a large research factory.</h2>
+    <p class="lede rv">One part is a <strong>protected live instrument</strong> that watches a slice of the market in real time and never acts without evidence. The other is a <strong>research factory</strong> that studies far more history than any live system could — turning millions of market observations into labelled outcomes, candidate ideas, and validators whose job is to <strong>refuse to believe a result</strong> until it survives on data it has never seen.</p>
+    <div class="steps rv">
+      <div class="step panel"><div class="n">01 · WATCH</div><h4>Listen</h4><p>The live instrument watches the market and records what it sees.</p></div>
+      <div class="step panel"><div class="n">02 · DIAGNOSE</div><h4>Study</h4><p>The research factory looks for patterns, and just as hard for reasons a pattern might be a mirage.</p></div>
+      <div class="step panel"><div class="n">03 · PROVE</div><h4>Believe slowly</h4><p>Nothing is trusted until it holds up forward, on days no one had seen when the idea was formed.</p></div>
     </div>
-  </div>
-  <div class="panel">
-    <canvas id="graph"></canvas>
-    <div class="tip" id="tip"></div>
-  </div>
-</main>
+  </section>
+
+  <section class="col">
+    <div class="eyebrow rv">The first instrument</div>
+    <h2 class="rv">It began as the Weather Machine.</h2>
+    <p class="lede rv">Before Katabasis was a research factory, it was one instrument: a live shadow watching a small slice of the options market, waiting for pressure changes, calibrating itself, and refusing to act without evidence. That instrument taught the project its first discipline — <strong>do not trust a signal just because it appears</strong>. It still runs, protected and unchanged, as one chamber inside the larger system.</p>
+    <a class="enter panel rv" href="weather-machine/">
+      <div class="lead-in">The original instrument · the first chamber of Katabasis</div>
+      <h3>Enter the Weather Machine</h3>
+      <div class="go">A protected live shadow that taught the larger system how to listen →</div>
+    </a>
+  </section>
+  </main>
+</div>
 
 <footer class="siteft">
-  <p class="footmark">THE WEATHER MACHINE · a solo research build by Max McCollom · <a href="colophon/">colophon</a></p>
+  <p class="footmark">KATABASIS · a solo research build by Max McCollom · <a href="colophon/">colophon</a> · no profit or loss is claimed or implied</p>
 </footer>
 
 <script src="state.js"></script>

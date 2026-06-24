@@ -54,18 +54,19 @@
     const cv=document.getElementById('graph'); if(!cv) return; const ctx=cv.getContext('2d');
     const tip=document.getElementById('tip');
     const COL={ aqua:[17,182,218], green:[8,192,138], magenta:[255,45,135], dim:[120,160,176] };
+    const prefix = cv.getAttribute('data-prefix') || '';
     const N=[
-      {id:'harness',label:'Execution harness',sub:(S.gate||'certified'),route:'machine/#harness',c:'green',tx:0.50,ty:0.87,r:0},
-      {id:'fill',label:'First live trade',sub:(S.firstFill||'pending'),route:'state/',c:'magenta',tx:0.53,ty:0.16,r:7},
+      {id:'harness',label:'Protected live baseline',sub:(S.baseline||'protected · byte-locked'),route:'./',c:'green',tx:0.50,ty:0.87,r:0},
+      {id:'observer',label:'Forward observer',sub:(S.observer||'the next instrument'),route:'trajectory/',c:'magenta',tx:0.53,ty:0.16,r:7},
       {id:'method',label:'Correction loop',sub:'how it learns',route:'method/',c:'aqua',tx:0.25,ty:0.40,r:5.5},
-      {id:'champ',label:'Strategy #1 — champion',sub:'in forward validation',route:'machine/',c:'aqua',tx:0.52,ty:0.46,r:6},
-      {id:'shadow',label:'Shadow streams',sub:'evidence before risk',route:'machine/#streams',c:'aqua',tx:0.77,ty:0.42,r:5.5},
-      {id:'findings',label:'Findings',sub:'tested foundations',route:'measured/',c:'green',tx:0.30,ty:0.66,r:5.5},
-      {id:'alloc',label:'Allocator',sub:'the destination',route:'trajectory/',c:'dim',tx:0.75,ty:0.64,r:5},
+      {id:'champ',label:'First strategy',sub:'likely weather, not durable',route:'machine/',c:'aqua',tx:0.52,ty:0.46,r:6},
+      {id:'shadow',label:'Live shadow',sub:'evidence before risk',route:'machine/#streams',c:'aqua',tx:0.77,ty:0.42,r:5.5},
+      {id:'factory',label:'Research factory',sub:'diagnoses, never promotes',route:'measured/',c:'green',tx:0.30,ty:0.66,r:5.5},
+      {id:'gate',label:'Forward gate',sub:'the only path to belief',route:'trajectory/',c:'dim',tx:0.75,ty:0.64,r:5},
     ];
     const idx=Object.fromEntries(N.map((n,i)=>[n.id,i]));
-    const E=[['method','champ'],['champ','shadow'],['champ','fill'],['method','findings'],['shadow','findings'],['champ','findings'],['alloc','champ'],['alloc','shadow']];
-    const SUB=['method','champ','shadow','findings','alloc','fill'];
+    const E=[['method','champ'],['champ','shadow'],['champ','observer'],['method','factory'],['shadow','factory'],['champ','factory'],['gate','champ'],['gate','shadow']];
+    const SUB=['method','champ','shadow','factory','gate','observer'];
     let W,H,DPR,raf,t0=null,settled=false,hover=-1,lastW=innerWidth,rt;
     const ease=x=>1-Math.pow(1-x,3); const noise=(a,b)=>Math.sin(a*0.7+b)*0.6+Math.sin(a*1.7-b*1.3)*0.4;
     function size(){ DPR=Math.min(devicePixelRatio||1,small?1.5:2); const r=cv.getBoundingClientRect(); W=r.width; H=r.height;
@@ -98,7 +99,7 @@
       if(h!==hover){ hover=h; if(!small&&!reduce&&!raf) raf=requestAnimationFrame(draw); }
       if(h>=0){ const n=N[h]; tip.innerHTML=n.label+' &nbsp;<span class="st">'+n.sub+'</span>'; tip.style.left=n.x+'px'; tip.style.top=n.y+'px'; tip.style.opacity=1; } else tip.style.opacity=0; },{passive:true});
     cv.addEventListener('pointerleave',()=>{ hover=-1; tip.style.opacity=0; });
-    cv.addEventListener('click',e=>{ const r=cv.getBoundingClientRect(); const h=nodeAt(e.clientX-r.left,e.clientY-r.top); if(h>=0) location.href=N[h].route; });
+    cv.addEventListener('click',e=>{ const r=cv.getBoundingClientRect(); const h=nodeAt(e.clientX-r.left,e.clientY-r.top); if(h>=0) location.href=prefix+N[h].route; });
     addEventListener('resize',()=>{ if(innerWidth===lastW) return; clearTimeout(rt); rt=setTimeout(()=>{ lastW=innerWidth; size(); if(reduce||small){ settled=false; t0=null; draw(performance.now()); } },200); },{passive:true});
     size(); raf=requestAnimationFrame(draw);
   })();
